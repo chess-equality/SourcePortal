@@ -1,0 +1,6 @@
+/server/build/
+/server/gradle/
+/shared/build/
+/shared/gradle/
+/ui/build/
+/ui/gradle/
