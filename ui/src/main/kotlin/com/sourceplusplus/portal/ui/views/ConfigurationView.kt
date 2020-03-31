@@ -1,4 +1,4 @@
-package plus.sourceplus.portal.ui.views
+package com.sourceplusplus.portal.ui.views
 
 import kotlin.browser.document
 

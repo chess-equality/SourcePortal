@@ -1,4 +1,4 @@
-package plus.sourceplus.portal.shared
+package com.sourceplusplus.portal.shared
 
 class SharedClass {
     fun outputStuff() {
