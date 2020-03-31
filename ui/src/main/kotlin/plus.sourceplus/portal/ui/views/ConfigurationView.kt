@@ -1,3 +1,5 @@
+package plus.sourceplus.portal.ui.views
+
 import kotlin.browser.document
 
 class ConfigurationView {
