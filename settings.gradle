@@ -1,0 +1,5 @@
+rootProject.name = 'SourcePortal'
+include 'server'
+include 'shared'
+include 'ui'
+
