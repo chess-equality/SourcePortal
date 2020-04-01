@@ -6,10 +6,11 @@ plugins {
 }
 
 subprojects {
-    group = "plus.sourceplus"
+    group = "com.sourceplusplus"
     version = "1.0-SNAPSHOT"
 
     repositories {
         mavenCentral()
+        //maven(url = "https://jitpack.io") { name = "jitpack" }
     }
 }
