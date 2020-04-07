@@ -3,8 +3,7 @@ package com.sourceplusplus.portal
 import com.google.common.cache.CacheBuilder
 import com.google.common.cache.CacheLoader
 import com.google.common.cache.LoadingCache
-import com.intellij.ui.jcef.JBCefBrowser
-import com.sourceplusplus.portal.display.PortalInterface
+import com.sourceplusplus.portal.display.PortalUI
 import groovy.transform.Canonical
 import groovy.util.logging.Slf4j
 
@@ -13,7 +12,7 @@ import java.util.concurrent.TimeUnit
 /**
  * todo: description
  *
- * @version 0.2.4
+ * @version 0.2.5
  * @since 0.2.0
  * @author <a href="mailto:brandon@srcpl.us">Brandon Fergerson</a>
  */
@@ -21,20 +20,20 @@ import java.util.concurrent.TimeUnit
 @Canonical
 class SourcePortal implements Closeable {
 
-    private static final LoadingCache<String, SourcePortal> portalMap = CacheBuilder.newBuilder()
+    protected static final LoadingCache<String, SourcePortal> portalMap = CacheBuilder.newBuilder()
             .expireAfterAccess(5, TimeUnit.MINUTES)
             .build(new CacheLoader<String, SourcePortal>() {
-        @Override
-        SourcePortal load(String portalUuid) throws Exception {
-            return getPortal(portalUuid)
-        }
-    })
+                @Override
+                SourcePortal load(String portalUuid) throws Exception {
+                    return getPortal(portalUuid)
+                }
+            })
     private final String portalUuid
     private final String appUuid
     private final boolean external
-    private PortalInterface portalUI
+    protected PortalUI portalUI
 
-    private SourcePortal(String portalUuid, String appUuid, boolean external) {
+    protected SourcePortal(String portalUuid, String appUuid, boolean external) {
         this.portalUuid = portalUuid
         this.appUuid = appUuid
         this.external = external
@@ -48,15 +47,15 @@ class SourcePortal implements Closeable {
 
     static Optional<SourcePortal> getInternalPortal(String appUuid, String artifactQualifiedName) {
         return Optional.ofNullable(portalMap.asMap().values().find {
-            it.appUuid == appUuid && it.interface.viewingPortalArtifact == artifactQualifiedName && !it.external
+            it.appUuid == appUuid && it.portalUI.viewingPortalArtifact == artifactQualifiedName && !it.external
         })
     }
 
     static List<SourcePortal> getSimilarPortals(SourcePortal portal) {
         return portalMap.asMap().values().findAll {
             it.appUuid == portal.appUuid &&
-                    it.interface.viewingPortalArtifact == portal.interface.viewingPortalArtifact &&
-                    it.interface.currentTab == portal.interface.currentTab
+                    it.portalUI.viewingPortalArtifact == portal.portalUI.viewingPortalArtifact &&
+                    it.portalUI.currentTab == portal.portalUI.currentTab
         }
     }
 
@@ -72,31 +71,20 @@ class SourcePortal implements Closeable {
 
     static List<SourcePortal> getExternalPortals(String appUuid, String artifactQualifiedName) {
         return portalMap.asMap().values().findAll {
-            it.appUuid == appUuid && it.interface.viewingPortalArtifact == artifactQualifiedName && it.external
+            it.appUuid == appUuid && it.portalUI.viewingPortalArtifact == artifactQualifiedName && it.external
         }
     }
 
     static List<SourcePortal> getPortals(String appUuid, String artifactQualifiedName) {
         return portalMap.asMap().values().findAll {
-            it.appUuid == appUuid && it.interface.viewingPortalArtifact == artifactQualifiedName
+            it.appUuid == appUuid && it.portalUI.viewingPortalArtifact == artifactQualifiedName
         }
-    }
-
-    static void registerInternal(String appUuid, String portalUuid, String artifactQualifiedName, JBCefBrowser browser) {
-        //todo: ensure portal uuid valid
-        def portal = new SourcePortal(portalUuid, Objects.requireNonNull(appUuid), false)
-        portal.portalUI = new PortalInterface(portalUuid, browser)
-        portal.portalUI.viewingPortalArtifact = Objects.requireNonNull(artifactQualifiedName)
-
-        portalMap.put(portalUuid, portal)
-        log.info("Registered internal Source++ Portal. Portal UUID: $portalUuid - App UUID: $appUuid - Artifact: $artifactQualifiedName")
-        log.info("Active portals: " + portalMap.size())
     }
 
     static String register(String appUuid, String artifactQualifiedName, boolean external) {
         def portalUuid = UUID.randomUUID().toString()
         def portal = new SourcePortal(portalUuid, Objects.requireNonNull(appUuid), external)
-        portal.portalUI = new PortalInterface(portalUuid)
+        portal.portalUI = new PortalUI(portalUuid)
         portal.portalUI.viewingPortalArtifact = Objects.requireNonNull(artifactQualifiedName)
 
         portalMap.put(portalUuid, portal)
@@ -113,7 +101,7 @@ class SourcePortal implements Closeable {
         return portalMap.getIfPresent(portalUuid)
     }
 
-    PortalInterface getInterface() {
+    PortalUI getPortalUI() {
         return portalUI
     }
 
@@ -129,7 +117,6 @@ class SourcePortal implements Closeable {
     void close() throws IOException {
         log.info("Closed portal: $portalUuid")
         portalMap.invalidate(portalUuid)
-        portalUI.close()
         log.info("Active portals: " + portalMap.size())
     }
 
@@ -139,7 +126,7 @@ class SourcePortal implements Closeable {
 
     SourcePortal createExternalPortal() {
         def portalClone = getPortal(register(appUuid, portalUI.viewingPortalArtifact, true))
-        portalClone.portalUI.cloneViews(this.interface)
+        portalClone.portalUI.cloneUI(portalUI)
         return portalClone
     }
 }
