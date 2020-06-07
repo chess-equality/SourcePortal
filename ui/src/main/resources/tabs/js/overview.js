@@ -4,8 +4,10 @@ $('#sidebar_overview_link').attr('href', "overview.html" + mainGetQuery);
 
 $('#traces_link_latest').attr('href', "traces.html" + mainGetQuery + '&order_type=latest_traces');
 $('#traces_link_slowest').attr('href', "traces.html" + mainGetQuery + '&order_type=slowest_traces');
+$('#traces_link_failed').attr('href', "traces.html" + mainGetQuery + '&order_type=failed_traces');
 $('#sidebar_traces_link_latest').attr('href', "traces.html" + mainGetQuery + '&order_type=latest_traces');
 $('#sidebar_traces_link_slowest').attr('href', "traces.html" + mainGetQuery + '&order_type=slowest_traces');
+$('#sidebar_traces_link_failed').attr('href', "traces.html" + mainGetQuery + '&order_type=failed_traces');
 
 $('#configuration_link').attr('href', "configuration.html" + mainGetQuery);
 $('#sidebar_configuration_link').attr('href', "configuration.html" + mainGetQuery);
@@ -197,11 +199,12 @@ eb.onopen = function () {
     });
 
     var timeFrame = localStorage.getItem('spp.metric_time_frame');
-    if (timeFrame !== null) {
-        updateTime(timeFrame);
-        console.log('Set initial time frame to: ' + timeFrame);
-        eb.send('PortalLogger', 'Set initial time frame to: ' + timeFrame);
+    if (timeFrame == null) {
+        localStorage.setItem('spp.metric_time_frame', timeFrame =  currentTimeFrame);
     }
+    updateTime(timeFrame);
+    console.log('Set initial time frame to: ' + timeFrame);
+    eb.send('PortalLogger', 'Set initial time frame to: ' + timeFrame);
 
     eb.publish('OverviewTabOpened', {'portal_uuid': portalUuid});
 };

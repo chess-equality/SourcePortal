@@ -1,8 +1,15 @@
+if (hideOverviewTab) {
+    $('#overview_link').css('display', 'none');
+    $('#sidebar_overview_link').css('display', 'none');
+}
+
 function setupUI() {
     if (traceOrderType == 'LATEST_TRACES') {
         $('#latest_traces_header_text').text('Latest Traces');
     } else if (traceOrderType == 'SLOWEST_TRACES') {
         $('#latest_traces_header_text').text('Slowest Traces');
+    } else if (traceOrderType == 'FAILED_TRACES') {
+        $('#latest_traces_header_text').text('Failed Traces');
     }
 
     $("input[type='text']").on("click", function () {
@@ -20,8 +27,8 @@ var displayedTraceIds = new Map();
 
 function displayTraces(traceResult) {
     if (traceResult.order_type != traceOrderType) {
-        // console.log("Ignoring card for time frame: " + card.time_frame
-        //     + " - Current time frame: " + currentTimeFrame);
+        eb.send('PortalLogger', 'Ignoring display traces');
+        console.log("Ignoring display traces")
         return
     }
 
@@ -44,7 +51,7 @@ function displayTraces(traceResult) {
 
     var appUuid = traceResult.app_uuid;
     eb.send('PortalLogger', 'Displaying traces - Size: ' + traceResult.traces.length);
-    // console.log('Displaying traces - Size: ' + traceResult.traces.length);
+    console.log('Displaying traces - Size: ' + traceResult.traces.length);
 
     $('#traces_start_field').val(moment.unix(Number(traceResult.start)).format());
     $('#traces_stop_field').val(moment.unix(Number(traceResult.stop)).format());
@@ -79,24 +86,24 @@ function displayTraces(traceResult) {
             rowHtml += '<td class="collapsing">' + trace.pretty_duration + '</td>';
 
             if (trace.error) {
-                rowHtml += '<td class="collapsing" style="padding: 0; text-align: center; font-size: 20px"><i class="bug red icon"></i></td></tr>';
+                rowHtml += '<td class="collapsing" style="padding: 0; text-align: center; font-size: 20px"><i class="exclamation triangle red icon"></i></td></tr>';
             } else {
                 rowHtml += '<td class="collapsing" style="padding: 0; text-align: center; color:#808083; font-size: 20px"><i class="check circle outline icon"></i></td></tr>';
             }
 
             var insertIndex = displayedTraces.length;
-            if (traceResult.order_type == "LATEST_TRACES") {
-                //sort by time
+            if (traceResult.order_type == "SLOWEST_TRACES") {
+                //sort by duration
                 for (var z = 0; z < displayedTraces.length; z++) {
-                    if (trace.start >= displayedTraces[z].start) {
+                    if (trace.duration >= displayedTraces[z].duration) {
                         insertIndex = z;
                         break;
                     }
                 }
             } else {
-                //sort by duration
+                //sort by time
                 for (var z = 0; z < displayedTraces.length; z++) {
-                    if (trace.duration >= displayedTraces[z].duration) {
+                    if (trace.start >= displayedTraces[z].start) {
                         insertIndex = z;
                         break;
                     }
@@ -178,7 +185,15 @@ function displayInnerTraces(message) {
 
         rowHtml += '<td class="collapsing">' + spanInfo.time_took + '</td>';
         rowHtml += '<td><div class="ui red progress" id="trace_bar_' + i + '" style="margin: 0">';
-        rowHtml += '<div class="bar"></div></div></td></tr>';
+        rowHtml += '<div class="bar"></div></div></td>';
+
+        if (span.error) {
+            rowHtml += '<td class="collapsing" style="padding: 0; text-align: center; font-size: 20px"><i class="skull crossbones red icon"></i></td></tr>';
+        } else if (span.child_error && i > 0) {
+            rowHtml += '<td class="collapsing" style="padding: 0; text-align: center; font-size: 20px"><i class="exclamation triangle red icon"></i></td></tr>';
+        } else {
+            rowHtml += '<td class="collapsing" style="padding: 0; text-align: center; color:#808083; font-size: 20px"><i class="check circle outline icon"></i></td></tr>';
+        }
         $('#stack_table').append(rowHtml);
 
         $('#trace_bar_' + i).progress({
@@ -313,7 +328,9 @@ function displayTraceStack(traceStack) {
         rowHtml += '<div class="bar"></div></div></td>';
 
         if (span.error) {
-            rowHtml += '<td class="collapsing" style="padding: 0; text-align: center; font-size: 20px"><i class="bug red icon"></i></td></tr>';
+            rowHtml += '<td class="collapsing" style="padding: 0; text-align: center; font-size: 20px"><i class="skull crossbones red icon"></i></td></tr>';
+        } else if (span.child_error && i > 0) {
+            rowHtml += '<td class="collapsing" style="padding: 0; text-align: center; font-size: 20px"><i class="exclamation triangle red icon"></i></td></tr>';
         } else {
             rowHtml += '<td class="collapsing" style="padding: 0; text-align: center; color:#808083; font-size: 20px"><i class="check circle outline icon"></i></td></tr>';
         }
