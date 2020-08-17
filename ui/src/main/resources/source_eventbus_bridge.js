@@ -1,5 +1,7 @@
 var eb = new EventBus('http://localhost:7529/eventbus');
-eb.enableReconnect(true);
+//eb.enableReconnect(true); //todo: more logic behind this
+//todo: it is likely that a disconnect signifies the portal is gone
+//todo: so on reconnect there will need to be another portal uuid registered
 
 var getPortalUuid = findGetParameter("portal_uuid");
 var portalUuid = (getPortalUuid) ? getPortalUuid : null;
@@ -54,7 +56,7 @@ function clickedViewAsExternalPortal() {
 }
 
 function portalConnected() {
-    console.log("Source++ Portal successfully connected to eventbus bridge");
+    console.log("Portal successfully connected. Portal UUID: " + portalUuid);
     if (requiresRegistration) {
         eb.send("REGISTER_PORTAL", {
             'app_uuid': findGetParameter("app_uuid"),
@@ -63,12 +65,19 @@ function portalConnected() {
             window.open(window.location.href.split('?')[0] + '?portal_uuid=' + message.body.portal_uuid
                 + mainGetQueryWithoutPortalUuid, '_self');
         });
-    } else {
-        window.setInterval(keepPortalAlive, 60000 * 4);
+    } else if (externalPortal) {
+        let keepAliveInterval = window.setInterval(function () {
+            portalLog("Sent portal keep alive request. Portal UUID: " + portalUuid);
+            eb.send('KeepAlivePortal', {'portal_uuid': portalUuid}, function (error, message) {
+                if (error) {
+                    clearInterval(keepAliveInterval);
+                }
+            });
+        }, 30000);
     }
 }
 
-function keepPortalAlive() {
-    eb.send('KeepAlivePortal', {'portal_uuid': portalUuid});
-    console.log("Sent portal keep alive request");
+function portalLog(message) {
+    console.log(message);
+    eb.send('PortalLogger', message);
 }
