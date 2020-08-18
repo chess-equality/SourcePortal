@@ -1,10 +1,9 @@
 package com.sourceplusplus.portal.ui.views
 
-import kotlin.browser.document
+import kotlinx.browser.document
 
 class ConfigurationView {
 //    fun test() {
 //        document.getElementById("artifact_qualified_name")!!.textContent = "hello"
 //    }
 }
-
