@@ -3,8 +3,9 @@ plugins {
 }
 
 kotlin {
-    target {
+    js {
         browser()
+        binaries.executable()
     }
     sourceSets {
         val main by getting {
