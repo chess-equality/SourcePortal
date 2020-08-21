@@ -4,11 +4,13 @@ class PortalServer {
 }
 
 //import com.apollographql.apollo.ApolloClient
+//import com.apollographql.apollo.api.toJson
 //import com.apollographql.apollo.coroutines.toDeferred
 //import com.apollographql.apollo.exception.ApolloException
 //import com.sourceplusplus.portal.shared.model.metadata.GetTimeInfoQuery
 //import kotlinx.coroutines.launch
 //import kotlinx.coroutines.runBlocking
+//import okio.ByteString.Companion.encodeUtf8
 //
 //fun main() = runBlocking {
 //    val apolloClient = ApolloClient.builder()
@@ -23,7 +25,9 @@ class PortalServer {
 //            return@launch
 //        }
 //
-//        val countries = response.data?.result
+//        var countries = response.data!!.toJson()
+//        var countries2 = GetTimeInfoQuery().parse(countries.encodeUtf8())
+//        println(countries2.data!!.result!!.timezone)
 //        if (countries == null || response.hasErrors()) {
 //            println(response)
 //            return@launch
