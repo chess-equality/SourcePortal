@@ -3,6 +3,12 @@ plugins {
     application
 }
 
+application {
+    mainClassName = "io.vertx.core.Launcher"
+}
+
+val mainVerticleName = "com.sourceplusplus.portal.server.PortalServer"
+
 dependencies {
     val vertxVersion = "3.9.2"
     implementation(kotlin("stdlib-jdk8"))
@@ -24,8 +30,7 @@ tasks {
     compileTestKotlin {
         kotlinOptions.jvmTarget = "1.8"
     }
-}
-
-application {
-    mainClassName = "RESTServerKt"
+    getByName<JavaExec>("run") {
+        args = listOf("run", mainVerticleName)
+    }
 }
