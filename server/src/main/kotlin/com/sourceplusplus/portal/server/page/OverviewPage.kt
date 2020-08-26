@@ -1,248 +1,251 @@
 package com.sourceplusplus.portal.server.page
 
 import kotlinx.html.*
-import kotlinx.html.stream.createHTML
+import kotlinx.html.stream.appendHTML
 
 @Suppress("unused")
 class OverviewPage {
     fun renderPage(): String {
-        return createHTML().html {
-            head {
-                meta {
-                    charset = "UTF-8"
+        return buildString {
+            appendLine("<!DOCTYPE html>")
+            appendHTML().html {
+                head {
+                    meta {
+                        charset = "UTF-8"
+                    }
+                    title { + """Overview - Source++"""}
+                    link {
+                        rel = "stylesheet"
+                        href = "semantic.min.css"
+                    }
+                    script {
+                        src = "echarts.min.js"
+                    }
+                    script {
+                        src = "jquery-3.5.1.min.js"
+                    }
+                    script {
+                        src = "portal_theme.js"
+                    }
                 }
-                title { + """Overview - Source++"""}
-                link {
-                    rel = "stylesheet"
-                    href = "semantic.min.css"
-                }
-                script {
-                    src = "echarts.min.js"
-                }
-                script {
-                    src = "jquery-3.5.1.min.js"
-                }
-                script {
-                    src = "portal_theme.js"
-                }
-            }
-            body {
-                style = "overflow-y: hidden"
-                div("ui sidebar vertical left menu overlay visible very thin icon spp_blue") {
-                    style = "-webkit-transition-duration: 0.1s; overflow: visible !important;"
-                    div("ui accordion displaynone") {
-                        a(classes = "item openbtn") {
-                            style = "background-color: white; height: 45px !important;"
-                            + """Close menu"""
+                body {
+                    style = "overflow-y: hidden"
+                    div("ui sidebar vertical left menu overlay visible very thin icon spp_blue") {
+                        style = "-webkit-transition-duration: 0.1s; overflow: visible !important;"
+                        div("ui accordion displaynone") {
+                            a(classes = "item openbtn") {
+                                style = "background-color: white; height: 45px !important;"
+                                + """Close menu"""
+                            }
+                            a(classes = "item active_tab") { + """Dashboard"""}
+                            div("title item inactive_tab") {
+                                i("dropdown icon") {
+                                }
+                                + """Traces"""
+                            }
+                            div("content") {
+                                a(classes = "item sidebar_sub_text_color") {
+                                    id = "sidebar_traces_link_latest"
+                                    href = "traces"
+                                    + """Latest"""
+                                }
+                                a(classes = "item sidebar_sub_text_color") {
+                                    id = "sidebar_traces_link_slowest"
+                                    href = "traces"
+                                    + """Slowest"""
+                                }
+                                a(classes = "item sidebar_sub_text_color") {
+                                    id = "sidebar_traces_link_failed"
+                                    href = "traces"
+                                    + """Failed"""
+                                }
+                            }
+                            a(classes = "item inactive_tab") {
+                                id = "sidebar_configuration_link"
+                                href = "configuration"
+                                + """Configuration"""
+                            }
                         }
-                        a(classes = "item active_tab") { + """Dashboard"""}
-                        div("title item inactive_tab") {
-                            i("dropdown icon") {
-                            }
-                            + """Traces"""
-                        }
-                        div("content") {
-                            a(classes = "item sidebar_sub_text_color") {
-                                id = "sidebar_traces_link_latest"
-                                href = "traces"
-                                + """Latest"""
-                            }
-                            a(classes = "item sidebar_sub_text_color") {
-                                id = "sidebar_traces_link_slowest"
-                                href = "traces"
-                                + """Slowest"""
-                            }
-                            a(classes = "item sidebar_sub_text_color") {
-                                id = "sidebar_traces_link_failed"
-                                href = "traces"
-                                + """Failed"""
+                        div("ui dropdown item openbtn") {
+                            style = "color: white"
+                            i("icon demo-icon content") {
                             }
                         }
-                        a(classes = "item inactive_tab") {
-                            id = "sidebar_configuration_link"
+                        a(classes = "ui dropdown item active_tab") {
+                            i("icon demo-icon dashboard") {
+                            }
+                        }
+                        div("ui dropdown item inactive_tab") {
+                            unsafe {
+                                +"""<z class="displaynone">Traces</z>"""
+                            }
+                            i("icon demo-icon code") {
+                            }
+                            div("menu secondary_background_color") {
+                                a(classes = "item") {
+                                    id = "traces_link_latest"
+                                    href = "traces"
+                                    span("menu_tooltip_text") { + """Latest"""}
+                                }
+                                a(classes = "item") {
+                                    id = "traces_link_slowest"
+                                    href = "traces"
+                                    span("menu_tooltip_text") { + """Slowest"""}
+                                }
+                                a(classes = "item") {
+                                    id = "traces_link_failed"
+                                    href = "traces"
+                                    span("menu_tooltip_text") { + """Failed"""}
+                                }
+                            }
+                        }
+                        a(classes = "ui item hide_on_toggle") {
+                            id = "configuration_link"
                             href = "configuration"
-                            + """Configuration"""
-                        }
-                    }
-                    div("ui dropdown item openbtn") {
-                        style = "color: white"
-                        i("icon demo-icon content") {
-                        }
-                    }
-                    a(classes = "ui dropdown item active_tab") {
-                        i("icon demo-icon dashboard") {
-                        }
-                    }
-                    div("ui dropdown item inactive_tab") {
-                        unsafe {
-                            +"""<z class="displaynone">Traces</z>"""
-                        }
-                        i("icon demo-icon code") {
-                        }
-                        div("menu secondary_background_color") {
-                            a(classes = "item") {
-                                id = "traces_link_latest"
-                                href = "traces"
-                                span("menu_tooltip_text") { + """Latest"""}
-                            }
-                            a(classes = "item") {
-                                id = "traces_link_slowest"
-                                href = "traces"
-                                span("menu_tooltip_text") { + """Slowest"""}
-                            }
-                            a(classes = "item") {
-                                id = "traces_link_failed"
-                                href = "traces"
-                                span("menu_tooltip_text") { + """Failed"""}
+                            i("icon configure inactive_tab") {
                             }
                         }
                     }
-                    a(classes = "ui item hide_on_toggle") {
-                        id = "configuration_link"
-                        href = "configuration"
-                        i("icon configure inactive_tab") {
-                        }
-                    }
-                }
-                div("pusher") {
-                    div("ui menu fixed asd marginlefting middle aligned content") {
-                        style = "border-radius: 0!important; border: 0; margin-left: 260px; -webkit-transition-duration: 0.1s; align-content: center;"
-                        div("ui sidebar horizontal top menu fixed overlay visible very thin icon background_color") {
-                            style = "-webkit-transition-duration: 0.1s; overflow: visible !important;"
-                            div("marginlefting") {
-                                style = "height: 45px; line-height: 45px; align-content:center;"
-                                div("ui icon top left pointing dropdown") {
-                                    i("clock outline icon spp_red_color") {
-                                        style = "font-size: 20px; margin-top: -2px"
-                                    }
-                                    div("menu secondary_background_color") {
-                                        style = "margin-top: 0 !important;"
-                                        div("item") {
-                                            id = "last_5_minutes_time"
-                                            onClick = "updateTime('last_5_minutes')"
-                                            span("menu_tooltip_text") { + """LAST 5 MINUTES"""}
+                    div("pusher") {
+                        div("ui menu fixed asd marginlefting middle aligned content") {
+                            style = "border-radius: 0!important; border: 0; margin-left: 260px; -webkit-transition-duration: 0.1s; align-content: center;"
+                            div("ui sidebar horizontal top menu fixed overlay visible very thin icon background_color") {
+                                style = "-webkit-transition-duration: 0.1s; overflow: visible !important;"
+                                div("marginlefting") {
+                                    style = "height: 45px; line-height: 45px; align-content:center;"
+                                    div("ui icon top left pointing dropdown") {
+                                        i("clock outline icon spp_red_color") {
+                                            style = "font-size: 20px; margin-top: -2px"
                                         }
-                                        div("item") {
-                                            id = "last_15_minutes_time"
-                                            onClick = "updateTime('last_15_minutes')"
-                                            span("menu_tooltip_active_text") { + """LAST 15 MINUTES"""}
-                                        }
-                                        div("item") {
-                                            id = "last_30_minutes_time"
-                                            onClick = "updateTime('last_30_minutes')"
-                                            span("menu_tooltip_text") { + """LAST 30 MINUTES"""}
-                                        }
-                                        div("item") {
-                                            id = "last_hour_time"
-                                            onClick = "updateTime('last_hour')"
-                                            span("menu_tooltip_text") { + """LAST HOUR"""}
-                                        }
-                                        div("item") {
-                                            id = "last_3_hours_time"
-                                            onClick = "updateTime('last_3_hours')"
-                                            span("menu_tooltip_text") { + """LAST 3 HOURS"""}
+                                        div("menu secondary_background_color") {
+                                            style = "margin-top: 0 !important;"
+                                            div("item") {
+                                                id = "last_5_minutes_time"
+                                                onClick = "updateTime('last_5_minutes')"
+                                                span("menu_tooltip_text") { + """LAST 5 MINUTES"""}
+                                            }
+                                            div("item") {
+                                                id = "last_15_minutes_time"
+                                                onClick = "updateTime('last_15_minutes')"
+                                                span("menu_tooltip_active_text") { + """LAST 15 MINUTES"""}
+                                            }
+                                            div("item") {
+                                                id = "last_30_minutes_time"
+                                                onClick = "updateTime('last_30_minutes')"
+                                                span("menu_tooltip_text") { + """LAST 30 MINUTES"""}
+                                            }
+                                            div("item") {
+                                                id = "last_hour_time"
+                                                onClick = "updateTime('last_hour')"
+                                                span("menu_tooltip_text") { + """LAST HOUR"""}
+                                            }
+                                            div("item") {
+                                                id = "last_3_hours_time"
+                                                onClick = "updateTime('last_3_hours')"
+                                                span("menu_tooltip_text") { + """LAST 3 HOURS"""}
+                                            }
                                         }
                                     }
                                 }
-                            }
-                            div("right menu") {
-                                style = "height: 45px; line-height: 45px; align-content:center;"
-                                a {
-                                    id = "current_page_external"
-                                    href = "#"
-                                    onClick = "clickedViewAsExternalPortal()"
-                                    i("external link icon spp_red_color") {
-                                        style = "font-size: 20px; margin-top: -2px"
-                                    }
-                                }
-                            }
-                        }
-                    }
-                    div("ui padded equal height grid background_color") {
-                        style = "min-height: 100vh; margin-left: 60px !important"
-                        div("twelve wide stretched column") {
-                            div("ui equal height grid") {
-                                div("one column row") {
-                                    style = "padding-top: 7px; padding-bottom: 0"
-                                    div("column") {
-                                        style = "padding-left: 0; padding-right: 0"
-                                        div {
-                                            id = "overview_chart"
-                                            style = "height: 100%;"
+                                div("right menu") {
+                                    style = "height: 45px; line-height: 45px; align-content:center;"
+                                    a {
+                                        id = "current_page_external"
+                                        href = "#"
+                                        onClick = "clickedViewAsExternalPortal()"
+                                        i("external link icon spp_red_color") {
+                                            style = "font-size: 20px; margin-top: -2px"
                                         }
                                     }
                                 }
                             }
                         }
-                        div("four wide stretched column middle aligned") {
-                            div("ui divided link items") {
-                                style = "font-size: 10px"
-                                div("item") {
-                                    div("ui mini statistic") {
-                                        onClick = "clickedViewAverageThroughputChart()"
-                                        div("value") {
-                                            id = "card_throughput_average_header"
-                                            style = "text-align: left"
-                                            + """n/a"""
-                                        }
-                                        div("label") {
-                                            id = "card_throughput_average_header_label"
-                                            + """AVG THROUGHPUT"""
+                        div("ui padded equal height grid background_color") {
+                            style = "min-height: 100vh; margin-left: 60px !important"
+                            div("twelve wide stretched column") {
+                                div("ui equal height grid") {
+                                    div("one column row") {
+                                        style = "padding-top: 7px; padding-bottom: 0"
+                                        div("column") {
+                                            style = "padding-left: 0; padding-right: 0"
+                                            div {
+                                                id = "overview_chart"
+                                                style = "height: 100%;"
+                                            }
                                         }
                                     }
                                 }
-                                div("item") {
-                                    div("ui mini statistic") {
-                                        onClick = "clickedViewAverageResponseTimeChart()"
-                                        div("value spp_red_color") {
-                                            id = "card_responsetime_average_header"
-                                            style = "text-align: left"
-                                            + """n/a"""
-                                        }
-                                        div("label spp_red_color") {
-                                            id = "card_responsetime_average_header_label"
-                                            + """AVG RESP TIME"""
+                            }
+                            div("four wide stretched column middle aligned") {
+                                div("ui divided link items") {
+                                    style = "font-size: 10px"
+                                    div("item") {
+                                        div("ui mini statistic") {
+                                            onClick = "clickedViewAverageThroughputChart()"
+                                            div("value") {
+                                                id = "card_throughput_average_header"
+                                                style = "text-align: left"
+                                                + """n/a"""
+                                            }
+                                            div("label") {
+                                                id = "card_throughput_average_header_label"
+                                                + """AVG THROUGHPUT"""
+                                            }
                                         }
                                     }
-                                }
-                                div("item") {
-                                    div("ui mini statistic") {
-                                        onClick = "clickedViewAverageSLAChart()"
-                                        div("value") {
-                                            id = "card_servicelevelagreement_average_header"
-                                            style = "text-align: left"
-                                            + """n/a"""
+                                    div("item") {
+                                        div("ui mini statistic") {
+                                            onClick = "clickedViewAverageResponseTimeChart()"
+                                            div("value spp_red_color") {
+                                                id = "card_responsetime_average_header"
+                                                style = "text-align: left"
+                                                + """n/a"""
+                                            }
+                                            div("label spp_red_color") {
+                                                id = "card_responsetime_average_header_label"
+                                                + """AVG RESP TIME"""
+                                            }
                                         }
-                                        div("label") {
-                                            id = "card_servicelevelagreement_average_header_label"
-                                            + """AVG SLA"""
+                                    }
+                                    div("item") {
+                                        div("ui mini statistic") {
+                                            onClick = "clickedViewAverageSLAChart()"
+                                            div("value") {
+                                                id = "card_servicelevelagreement_average_header"
+                                                style = "text-align: left"
+                                                + """n/a"""
+                                            }
+                                            div("label") {
+                                                id = "card_servicelevelagreement_average_header_label"
+                                                + """AVG SLA"""
+                                            }
                                         }
                                     }
                                 }
                             }
                         }
                     }
-                }
-                script {
-                    src = "semantic.min.js"
-                }
-                script {
-                    src = "moment.min.js"
-                }
-                script {
-                    src = "sockjs.min.js"
-                }
-                script {
-                    src = "vertx-eventbus.min.js"
-                }
-                script {
-                    src = "source_eventbus_bridge.js"
-                }
-                script {
-                    src = "js/overview.js"
-                }
-                script {
-                    src = "js/views/overview_view.js"
+                    script {
+                        src = "semantic.min.js"
+                    }
+                    script {
+                        src = "moment.min.js"
+                    }
+                    script {
+                        src = "sockjs.min.js"
+                    }
+                    script {
+                        src = "vertx-eventbus.min.js"
+                    }
+                    script {
+                        src = "source_eventbus_bridge.js"
+                    }
+                    script {
+                        src = "js/overview.js"
+                    }
+                    script {
+                        src = "js/views/overview_view.js"
+                    }
                 }
             }
         }
