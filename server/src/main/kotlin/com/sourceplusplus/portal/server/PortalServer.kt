@@ -1,26 +1,38 @@
 package com.sourceplusplus.portal.server
 
+import com.sourceplusplus.portal.server.page.ConfigurationPage
+import com.sourceplusplus.portal.server.page.OverviewPage
+import com.sourceplusplus.portal.server.page.TracesPage
+import io.vertx.core.Vertx
 import io.vertx.ext.web.Route
 import io.vertx.ext.web.Router
 import io.vertx.ext.web.RoutingContext
+import io.vertx.ext.web.handler.LoggerHandler
+import io.vertx.ext.web.handler.ResponseTimeHandler
 import io.vertx.ext.web.handler.StaticHandler
 import io.vertx.kotlin.core.http.listenAwait
 import io.vertx.kotlin.coroutines.CoroutineVerticle
 import io.vertx.kotlin.coroutines.dispatcher
-import kotlinx.coroutines.launch
-
-import com.sourceplusplus.portal.server.page.OverviewPage
-import com.sourceplusplus.portal.server.page.TracesPage
-import com.sourceplusplus.portal.server.page.ConfigurationPage
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 @Suppress("unused")
 class PortalServer : CoroutineVerticle() {
 
+    companion object {
+        @JvmStatic
+        fun main(args: Array<String>) {
+            val vertx: Vertx = Vertx.vertx()
+            vertx.deployVerticle(PortalServer::class.java.name)
+        }
+    }
+
     override suspend fun start() {
         // Build Vert.x Web router
         val router = Router.router(vertx)
+        router.route().handler(LoggerHandler.create())
+        router.route().handler(ResponseTimeHandler.create())
 
         // Static handler
         router.route("/*").handler(StaticHandler.create())
