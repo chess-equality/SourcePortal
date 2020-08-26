@@ -37,9 +37,9 @@ class PortalServer : CoroutineVerticle() {
         // Static handler
         router.route("/*").handler(StaticHandler.create())
         // Routes
-        router.get("/overview*").coroutineHandler { ctx -> getOverview(ctx) }
-        router.get("/traces*").coroutineHandler { ctx -> getTraces(ctx) }
-        router.get("/configuration*").coroutineHandler { ctx -> getConfiguration(ctx) }
+        router.get("/overview").coroutineHandler { ctx -> getOverview(ctx) }
+        router.get("/traces").coroutineHandler { ctx -> getTraces(ctx) }
+        router.get("/configuration").coroutineHandler { ctx -> getConfiguration(ctx) }
 
         // Start the server
         vertx.createHttpServer()

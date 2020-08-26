@@ -26,18 +26,18 @@ $(document).ready(function () {
         selector: {}
     });
 
-    $('#overview_link').attr('href', "overview.html" + mainGetQuery);
-    $('#sidebar_overview_link').attr('href', "overview.html" + mainGetQuery);
+    $('#overview_link').attr('href', "overview" + mainGetQuery);
+    $('#sidebar_overview_link').attr('href', "overview" + mainGetQuery);
 
-    $('#traces_link_latest').attr('href', "traces.html" + mainGetQuery + '&order_type=latest_traces');
-    $('#traces_link_slowest').attr('href', "traces.html" + mainGetQuery + '&order_type=slowest_traces');
-    $('#traces_link_failed').attr('href', "traces.html" + mainGetQuery + '&order_type=failed_traces');
-    $('#sidebar_traces_link_latest').attr('href', "traces.html" + mainGetQuery + '&order_type=latest_traces');
-    $('#sidebar_traces_link_slowest').attr('href', "traces.html" + mainGetQuery + '&order_type=slowest_traces');
-    $('#sidebar_traces_link_failed').attr('href', "traces.html" + mainGetQuery + '&order_type=failed_traces');
+    $('#traces_link_latest').attr('href', "traces" + mainGetQuery + '&order_type=latest_traces');
+    $('#traces_link_slowest').attr('href', "traces" + mainGetQuery + '&order_type=slowest_traces');
+    $('#traces_link_failed').attr('href', "traces" + mainGetQuery + '&order_type=failed_traces');
+    $('#sidebar_traces_link_latest').attr('href', "traces" + mainGetQuery + '&order_type=latest_traces');
+    $('#sidebar_traces_link_slowest').attr('href', "traces" + mainGetQuery + '&order_type=slowest_traces');
+    $('#sidebar_traces_link_failed').attr('href', "traces" + mainGetQuery + '&order_type=failed_traces');
 
-    $('#configuration_link').attr('href', "configuration.html" + mainGetQuery);
-    $('#sidebar_configuration_link').attr('href', "configuration.html" + mainGetQuery);
+    $('#configuration_link').attr('href', "configuration" + mainGetQuery);
+    $('#sidebar_configuration_link').attr('href', "configuration" + mainGetQuery);
 });
 
 function loadCSS(filename) {
