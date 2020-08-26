@@ -12,7 +12,6 @@ subprojects {
     repositories {
         mavenCentral()
         maven(url = "https://jitpack.io") { name = "jitpack" }
-        // maven(url = "http://dl.bintray.com/kotlin/ktor") { name = "ktor" }
         maven(url = "https://jcenter.bintray.com") { name = "jcenter" }
     }
 }
