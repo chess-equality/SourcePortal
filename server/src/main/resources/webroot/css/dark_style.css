@@ -81,3 +81,74 @@
 .span_segment_background {
     background-color: grey !important;
 }
+
+.overflow_y_hidden {
+    overflow-y: hidden;
+}
+
+.webkit_transition {
+    -webkit-transition-duration: 0.1s;
+}
+
+.overflow_visible {
+    overflow: visible !important;
+}
+
+.openbtn_background_white {
+    background-color: #ffffff;
+    height: 45px !important;
+}
+
+.white_color {
+    color: #ffffff;
+}
+
+.menu_style {
+    border-radius: 0 !important;
+    border: 0;
+    margin-left: 260px;
+    -webkit-transition-duration: 0.1s;
+    align-content: center;
+}
+
+.align_content_center {
+    height: 45px;
+    line-height: 45px;
+    align-content: center;
+}
+
+.spp_font_margin {
+    font-size: 20px;
+    margin-top: -2px;
+}
+
+.no_top_margin {
+    margin-top: 0 !important;
+}
+
+.grid_height_margin {
+    min-height: 100vh;
+    margin-left: 60px !important;
+}
+
+.padding_top_bottom {
+    padding-top: 7px;
+    padding-bottom: 0;
+}
+
+.padding_left_right {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.full_height {
+    height: 100%;
+}
+
+.items_font {
+    font-size: 10px;
+}
+
+.align_left {
+    text-align: left;
+}

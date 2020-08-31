@@ -28,14 +28,14 @@ class OverviewPage {
                         src = "portal_theme.js"
                     }
                 }
-                body {
-                    style = "overflow-y: hidden"
-                    div("ui sidebar vertical left menu overlay visible very thin icon spp_blue") {
-                        style = "-webkit-transition-duration: 0.1s; overflow: visible !important;"
+                body("overflow_y_hidden") {
+                    div("ui sidebar vertical left menu overlay visible very thin icon spp_blue webkit_transition") {
+                        style = "overflow: visible !important;"
                         div("ui accordion displaynone") {
-                            a(classes = "item openbtn") {
-                                style = "background-color: white; height: 45px !important;"
-                                + """Close menu"""
+                            div("openbtn_background_white") {
+                                a(classes = "item openbtn") {
+                                    + """Close menu"""
+                                }
                             }
                             a(classes = "item active_tab") { + """Dashboard"""}
                             div("title item inactive_tab") {
@@ -67,8 +67,9 @@ class OverviewPage {
                             }
                         }
                         div("ui dropdown item openbtn") {
-                            style = "color: white"
-                            i("icon demo-icon content") {
+                            div("white_color") {
+                                i("icon demo-icon content") {
+                                }
                             }
                         }
                         a(classes = "ui dropdown item active_tab") {
@@ -107,18 +108,14 @@ class OverviewPage {
                         }
                     }
                     div("pusher") {
-                        div("ui menu fixed asd marginlefting middle aligned content") {
-                            style = "border-radius: 0!important; border: 0; margin-left: 260px; -webkit-transition-duration: 0.1s; align-content: center;"
-                            div("ui sidebar horizontal top menu fixed overlay visible very thin icon background_color") {
-                                style = "-webkit-transition-duration: 0.1s; overflow: visible !important;"
-                                div("marginlefting") {
-                                    style = "height: 45px; line-height: 45px; align-content:center;"
+                        div("ui menu fixed asd marginlefting middle aligned content menu_style") {
+                            div("ui sidebar horizontal top menu fixed overlay visible very thin icon background_color webkit_transition") {
+                                style = "overflow: visible !important;"
+                                div("marginlefting align_content_center") {
                                     div("ui icon top left pointing dropdown") {
-                                        i("clock outline icon spp_red_color") {
-                                            style = "font-size: 20px; margin-top: -2px"
+                                        i("clock outline icon spp_red_color spp_font_margin") {
                                         }
-                                        div("menu secondary_background_color") {
-                                            style = "margin-top: 0 !important;"
+                                        div("menu secondary_background_color no_top_margin") {
                                             div("item") {
                                                 id = "last_5_minutes_time"
                                                 onClick = "updateTime('last_5_minutes')"
@@ -147,14 +144,12 @@ class OverviewPage {
                                         }
                                     }
                                 }
-                                div("right menu") {
-                                    style = "height: 45px; line-height: 45px; align-content:center;"
+                                div("right menu align_content_center") {
                                     a {
                                         id = "current_page_external"
                                         href = "#"
                                         onClick = "clickedViewAsExternalPortal()"
-                                        i("external link icon spp_red_color") {
-                                            style = "font-size: 20px; margin-top: -2px"
+                                        i("external link icon spp_red_color spp_font_margin") {
                                         }
                                     }
                                 }
@@ -164,10 +159,8 @@ class OverviewPage {
                             style = "min-height: 100vh; margin-left: 60px !important"
                             div("twelve wide stretched column") {
                                 div("ui equal height grid") {
-                                    div("one column row") {
-                                        style = "padding-top: 7px; padding-bottom: 0"
-                                        div("column") {
-                                            style = "padding-left: 0; padding-right: 0"
+                                    div("one column row padding_top_bottom") {
+                                        div("column padding_left_right") {
                                             div {
                                                 id = "overview_chart"
                                                 style = "height: 100%;"
@@ -177,14 +170,12 @@ class OverviewPage {
                                 }
                             }
                             div("four wide stretched column middle aligned") {
-                                div("ui divided link items") {
-                                    style = "font-size: 10px"
+                                div("ui divided link items items_font") {
                                     div("item") {
                                         div("ui mini statistic") {
                                             onClick = "clickedViewAverageThroughputChart()"
-                                            div("value") {
+                                            div("value align_left") {
                                                 id = "card_throughput_average_header"
-                                                style = "text-align: left"
                                                 + """n/a"""
                                             }
                                             div("label") {
@@ -196,9 +187,8 @@ class OverviewPage {
                                     div("item") {
                                         div("ui mini statistic") {
                                             onClick = "clickedViewAverageResponseTimeChart()"
-                                            div("value spp_red_color") {
+                                            div("value spp_red_color align_left") {
                                                 id = "card_responsetime_average_header"
-                                                style = "text-align: left"
                                                 + """n/a"""
                                             }
                                             div("label spp_red_color") {
@@ -210,9 +200,8 @@ class OverviewPage {
                                     div("item") {
                                         div("ui mini statistic") {
                                             onClick = "clickedViewAverageSLAChart()"
-                                            div("value") {
+                                            div("value align_left") {
                                                 id = "card_servicelevelagreement_average_header"
-                                                style = "text-align: left"
                                                 + """n/a"""
                                             }
                                             div("label") {
