@@ -28,12 +28,13 @@ class TracesPage {
                     }
                 }
                 body {
-                    div("ui sidebar vertical left menu overlay visible very thin icon spp_blue") {
-                        style = "-webkit-transition-duration: 0.1s; overflow: visible !important;"
+                    div("ui sidebar vertical left menu overlay visible very thin icon spp_blue webkit_transition") {
+                        style = "overflow: visible !important;"
                         div("ui accordion displaynone") {
-                            a(classes = "item openbtn") {
-                                style = "background-color: white; height: 45px !important;"
-                                + """Close menu"""
+                            div("openbtn_background_white") {
+                                a(classes = "item openbtn") {
+                                    + """Close menu"""
+                                }
                             }
                             a(classes = "item inactive_tab") {
                                 id = "sidebar_overview_link"
@@ -69,8 +70,9 @@ class TracesPage {
                             }
                         }
                         div("ui dropdown item openbtn") {
-                            style = "color: white"
-                            i("icon demo-icon content") {
+                            div("white_color") {
+                                i("icon demo-icon content") {
+                                }
                             }
                         }
                         a(classes = "ui item hide_on_toggle") {
@@ -113,8 +115,7 @@ class TracesPage {
                         }
                     }
                     div("pusher background_color") {
-                        div("ui menu borderless marginlefting background_color") {
-                            style = "border-radius: 0 !important; border: 0; -webkit-transition-duration: 0.1s; height: 45px; margin-bottom: 0"
+                        div("ui menu borderless marginlefting background_color menu_style_2") {
                             a(classes = "ui item dropdown active_sub_tab") {
                                 id = "latest_traces_header"
                                 onClick = "clickedBackToTraces()"
@@ -128,9 +129,9 @@ class TracesPage {
                                         i("play icon spp_blue_color") {
                                         }
                                         input {
+                                            classes = setOf("input_width")
                                             id = "traces_start_field"
                                             type = InputType.text
-                                            style = "width: 210px"
                                             readonly = true
                                         }
                                     }
@@ -138,16 +139,15 @@ class TracesPage {
                                         i("stop icon spp_red_color") {
                                         }
                                         input {
+                                            classes = setOf("input_width")
                                             id = "traces_stop_field"
                                             type = InputType.text
-                                            style = "width: 210px"
                                             readonly = true
                                         }
                                     }
                                     div("divider") {
                                     }
-                                    div("ui input item") {
-                                        style = "text-align: center"
+                                    div("ui input item align_center") {
                                         label {
                                             id = "traces_total_label"
                                             + """Total: 0"""
@@ -155,10 +155,9 @@ class TracesPage {
                                     }
                                 }
                             }
-                            a(classes = "ui item dropdown") {
+                            a(classes = "ui item dropdown visibility_hidden") {
                                 id = "trace_stack_header"
                                 onClick = "clickedBackToTraceStack()"
-                                style = "visibility: hidden"
                                 span {
                                     id = "trace_stack_header_text"
                                     + """Trace Stack"""
@@ -166,69 +165,59 @@ class TracesPage {
                                 div("menu") {
                                     id = "trace_stack_menu"
                                     div("ui input item") {
-                                        i("crosshairs icon") {
-                                            style = "padding-top: 0"
+                                        i("crosshairs icon no_padding_top") {
                                         }
                                         input {
+                                            classes = setOf("input_width")
                                             id = "trace_id_field"
                                             type = InputType.text
-                                            style = "width: 210px"
                                             readonly = true
                                         }
                                     }
                                     div("ui input item") {
-                                        i("clock outline icon") {
-                                            style = "padding-top: 0"
+                                        i("clock outline icon no_padding_top") {
                                         }
                                         input {
+                                            classes = setOf("input_width")
                                             id = "time_occurred_field"
                                             type = InputType.text
-                                            style = "width: 210px"
                                             readonly = true
                                         }
                                     }
                                 }
                             }
-                            a(classes = "ui item dropdown") {
+                            a(classes = "ui item dropdown visibility_hidden") {
                                 id = "span_info_header"
-                                style = "visibility: hidden"
                                 span {
                                     id = "span_info_header_text"
                                     + """Span Info"""
                                 }
                             }
-                            div("right menu") {
-                                style = "height: 45px; line-height: 45px; align-content:center;"
+                            div("right menu align_content_center") {
                                 a {
                                     id = "current_page_external"
                                     href = "#"
                                     onClick = "clickedViewAsExternalPortal()"
-                                    i("external link icon spp_red_color") {
-                                        style = "font-size: 20px; margin-top: -2px"
+                                    i("external link icon spp_red_color spp_font_margin") {
                                     }
                                 }
                             }
                         }
                         div("wide column marginlefting") {
-                            table("ui celled striped table unstackable secondary_background_color") {
-                                style = "margin-top: 0"
+                            table("ui celled striped table unstackable secondary_background_color no_top_margin") {
                                 id = "top_trace_table"
                                 thead {
                                     tr {
-                                        th(classes = "secondary_background_color") {
-                                            style = "padding-top: 5px; padding-bottom: 5px"
+                                        th(classes = "secondary_background_color trace_th") {
                                             + """Operation"""
                                         }
-                                        th(classes = "secondary_background_color") {
-                                            style = "padding-top: 5px; padding-bottom: 5px; text-align: center"
+                                        th(classes = "secondary_background_color trace_th_center") {
                                             + """Occurred"""
                                         }
-                                        th(classes = "secondary_background_color") {
-                                            style = "padding-top: 5px; padding-bottom: 5px; text-align: center"
+                                        th(classes = "secondary_background_color trace_th_center") {
                                             + """Exec"""
                                         }
-                                        th(classes = "secondary_background_color") {
-                                            style = "padding-top: 5px; padding-bottom: 5px; text-align: center"
+                                        th(classes = "secondary_background_color trace_th_center") {
                                             + """Status"""
                                         }
                                     }
@@ -237,25 +226,20 @@ class TracesPage {
                                     id = "trace_table"
                                 }
                             }
-                            table("ui celled striped table unstackable trace_stack_table") {
+                            table("ui celled striped table unstackable trace_stack_table hidden_full_height") {
                                 id = "trace_stack_table"
-                                style = "visibility: hidden; margin-top: 0"
                                 thead("secondary_background_color") {
                                     tr {
-                                        th(classes = "secondary_background_color") {
-                                            style = "padding-top: 5px; padding-bottom: 5px"
+                                        th(classes = "secondary_background_color trace_th") {
                                             + """Operation"""
                                         }
-                                        th(classes = "secondary_background_color") {
-                                            style = "padding-top: 5px; padding-bottom: 5px; text-align: center"
+                                        th(classes = "secondary_background_color trace_th_center") {
                                             + """Exec"""
                                         }
-                                        th(classes = "secondary_background_color") {
-                                            style = "padding-top: 5px; padding-bottom: 5px; text-align: center"
+                                        th(classes = "secondary_background_color trace_th_center") {
                                             + """Exec (%)"""
                                         }
-                                        th(classes = "secondary_background_color") {
-                                            style = "padding-top: 5px; padding-bottom: 5px; text-align: center"
+                                        th(classes = "secondary_background_color trace_th_center") {
                                             + """Status"""
                                         }
                                     }
@@ -264,9 +248,8 @@ class TracesPage {
                                     id = "stack_table"
                                 }
                             }
-                            div {
+                            div("visibility_hidden") {
                                 id = "span_info_panel"
-                                style = "visibility: hidden"
                                 div("ui segments") {
                                     div("ui segment span_segment_background") {
                                         p {
@@ -292,9 +275,8 @@ class TracesPage {
                                             + """)"""
                                         }
                                     }
-                                    div("ui segment displaynone") {
+                                    div("ui segment displaynone no_padding") {
                                         id = "span_tag_div"
-                                        style = "padding: 0"
                                         table("ui celled striped table unstackable") {
                                             id = "span_tag_table"
                                             thead {
@@ -308,9 +290,8 @@ class TracesPage {
                                             }
                                         }
                                     }
-                                    div("ui segment displaynone") {
+                                    div("ui segment displaynone no_padding_auto") {
                                         id = "span_log_div"
-                                        style = "padding: 0; overflow-x: auto"
                                         table("ui celled striped table unstackable") {
                                             id = "log_tag_table"
                                             thead {

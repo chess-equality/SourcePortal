@@ -82,7 +82,7 @@ class OverviewPage {
                             }
                             i("icon demo-icon code") {
                             }
-                            div("menu secondary_background_color") {
+                            div("menu background_color") {
                                 a(classes = "item") {
                                     id = "traces_link_latest"
                                     href = "traces"
@@ -109,8 +109,7 @@ class OverviewPage {
                     }
                     div("pusher") {
                         div("ui menu fixed asd marginlefting middle aligned content menu_style") {
-                            div("ui sidebar horizontal top menu fixed overlay visible very thin icon background_color webkit_transition") {
-                                style = "overflow: visible !important;"
+                            div("ui sidebar horizontal top menu fixed overlay visible very thin icon background_color webkit_transition overflow_visible") {
                                 div("marginlefting align_content_center") {
                                     div("ui icon top left pointing dropdown") {
                                         i("clock outline icon spp_red_color spp_font_margin") {
@@ -155,15 +154,13 @@ class OverviewPage {
                                 }
                             }
                         }
-                        div("ui padded equal height grid background_color") {
-                            style = "min-height: 100vh; margin-left: 60px !important"
+                        div("ui padded equal height grid background_color grid_height_margin") {
                             div("twelve wide stretched column") {
                                 div("ui equal height grid") {
                                     div("one column row padding_top_bottom") {
                                         div("column padding_left_right") {
-                                            div {
+                                            div("full_height") {
                                                 id = "overview_chart"
-                                                style = "height: 100%;"
                                             }
                                         }
                                     }
@@ -174,9 +171,11 @@ class OverviewPage {
                                     div("item") {
                                         div("ui mini statistic") {
                                             onClick = "clickedViewAverageThroughputChart()"
-                                            div("value align_left") {
-                                                id = "card_throughput_average_header"
-                                                + """n/a"""
+                                            div("value") {
+                                                div("align_left") {
+                                                    id = "card_throughput_average_header"
+                                                    + """n/a"""
+                                                }
                                             }
                                             div("label") {
                                                 id = "card_throughput_average_header_label"
@@ -187,9 +186,11 @@ class OverviewPage {
                                     div("item") {
                                         div("ui mini statistic") {
                                             onClick = "clickedViewAverageResponseTimeChart()"
-                                            div("value spp_red_color align_left") {
-                                                id = "card_responsetime_average_header"
-                                                + """n/a"""
+                                            div("value spp_red_color") {
+                                                div("align_left") {
+                                                    id = "card_responsetime_average_header"
+                                                    + """n/a"""
+                                                }
                                             }
                                             div("label spp_red_color") {
                                                 id = "card_responsetime_average_header_label"
@@ -201,8 +202,10 @@ class OverviewPage {
                                         div("ui mini statistic") {
                                             onClick = "clickedViewAverageSLAChart()"
                                             div("value align_left") {
-                                                id = "card_servicelevelagreement_average_header"
-                                                + """n/a"""
+                                                div("align_left") {
+                                                    id = "card_servicelevelagreement_average_header"
+                                                    + """n/a"""
+                                                }
                                             }
                                             div("label") {
                                                 id = "card_servicelevelagreement_average_header_label"
