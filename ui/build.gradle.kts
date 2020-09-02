@@ -19,7 +19,6 @@ kotlin {
 //                implementation(npm("jquery", "3.5.1", generateExternals = true))
 
                 implementation(kotlin("stdlib-js"))
-                implementation(project(":shared"))
                 implementation("org.jetbrains.kotlinx:kotlinx-html-js:0.7.2")
             }
         }
