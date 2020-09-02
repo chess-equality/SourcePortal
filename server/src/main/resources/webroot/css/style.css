@@ -89,6 +89,12 @@
     margin-bottom: 0;
 }
 
+.menu_style_3 {
+    border-radius: 0 !important;
+    border: 0;
+    align-content: center;
+}
+
 .align_content_center {
     height: 45px;
     line-height: 45px;
@@ -121,6 +127,10 @@
 
 .full_height {
     height: 100%;
+}
+
+.min_height {
+    min-height: 100%;
 }
 
 .items_font {
@@ -170,4 +180,14 @@
 .no_padding_auto {
     padding: 0;
     overflow-x: auto;
+}
+
+.margin_right_white {
+    margin-right: 10px !important;
+    background-color: #ffffff !important;
+}
+
+.margin_left_no_padding {
+    padding: 0 !important;
+    margin-left: 10px !important;
 }
