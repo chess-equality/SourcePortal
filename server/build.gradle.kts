@@ -32,4 +32,20 @@ tasks {
     getByName<JavaExec>("run") {
         args = listOf("run", mainVerticleName)
     }
+
+    register<JavaExec>("runContinuous") {
+        val watchForChange = "src/**/*"
+        val doOnChange = "../gradlew classes processResources"
+
+        dependsOn("classes")
+        classpath = sourceSets["main"].runtimeClasspath
+        main = application.mainClassName
+        args = listOf(
+            "run",
+            mainVerticleName,
+            "--redeploy=$watchForChange",
+            "--launcher-class=${application.mainClassName}",
+            "--on-redeploy=$doOnChange"
+        )
+    }
 }
