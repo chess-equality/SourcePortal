@@ -12,7 +12,7 @@ val mainVerticleName = "com.sourceplusplus.portal.server.PortalServer"
 dependencies {
     val vertxVersion = "3.9.2"
     implementation(kotlin("stdlib-jdk8"))
-    implementation("org.jetbrains.kotlinx:kotlinx-html-jvm:0.7.2")
+    implementation("org.jetbrains.kotlinx:kotlinx-html-jvm:0.6.10")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.9")
     implementation("com.apollographql.apollo:apollo-runtime:2.3.0")
     implementation("com.apollographql.apollo:apollo-coroutines-support:2.3.0")
