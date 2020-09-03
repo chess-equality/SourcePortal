@@ -12,7 +12,6 @@ val mainVerticleName = "com.sourceplusplus.portal.server.PortalServer"
 dependencies {
     val vertxVersion = "3.9.2"
     implementation(kotlin("stdlib-jdk8"))
-    implementation(project(":shared"))
     implementation("org.jetbrains.kotlinx:kotlinx-html-jvm:0.7.2")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.9")
     implementation("com.apollographql.apollo:apollo-runtime:2.3.0")
@@ -32,5 +31,21 @@ tasks {
     }
     getByName<JavaExec>("run") {
         args = listOf("run", mainVerticleName)
+    }
+
+    register<JavaExec>("runContinuous") {
+        val watchForChange = "src/**/*"
+        val doOnChange = "../gradlew classes processResources"
+
+        dependsOn("classes")
+        classpath = sourceSets["main"].runtimeClasspath
+        main = application.mainClassName
+        args = listOf(
+            "run",
+            mainVerticleName,
+            "--redeploy=$watchForChange",
+            "--launcher-class=${application.mainClassName}",
+            "--on-redeploy=$doOnChange"
+        )
     }
 }
