@@ -154,14 +154,14 @@ class OverviewPage {
                                 }
                             }
                         }
-                        div("ui padded equal height grid background_color grid_height_margin") {
+                        div("ui padded equal height grid background_color") {
+                            style = "min-height: 100vh; margin-left: 60px !important"
                             div("twelve wide stretched column") {
                                 div("ui equal height grid") {
                                     div("one column row padding_top_bottom") {
                                         div("column padding_left_right") {
-                                            div("full_height") {
-                                                id = "overview_chart"
-                                            }
+                                            id = "overview_chart"
+                                            style = "height: 100%;"
                                         }
                                     }
                                 }
