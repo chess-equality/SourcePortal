@@ -12,7 +12,7 @@ class OverviewPage {
                     meta {
                         charset = "UTF-8"
                     }
-                    title { + """Overview - Source++"""}
+                    title { +"""Overview - Source++""" }
                     link {
                         rel = "stylesheet"
                         href = "semantic.min.css"
@@ -31,44 +31,40 @@ class OverviewPage {
                     div("ui sidebar vertical left menu overlay visible very thin icon spp_blue webkit_transition") {
                         style = "overflow: visible !important;"
                         div("ui accordion displaynone") {
-                            div("openbtn_background_white") {
-                                a(classes = "item openbtn") {
-                                    + """Close menu"""
-                                }
+                            a(classes = "item openbtn openbtn_background_white") {
+                                +"""Close menu"""
                             }
-                            a(classes = "item active_tab") { + """Dashboard"""}
+                            a(classes = "item active_tab") { +"""Dashboard""" }
                             div("title item inactive_tab") {
                                 i("dropdown icon") {
                                 }
-                                + """Traces"""
+                                +"""Traces"""
                             }
                             div("content") {
                                 a(classes = "item sidebar_sub_text_color") {
                                     id = "sidebar_traces_link_latest"
                                     href = "traces"
-                                    + """Latest"""
+                                    +"Latest"
                                 }
                                 a(classes = "item sidebar_sub_text_color") {
                                     id = "sidebar_traces_link_slowest"
                                     href = "traces"
-                                    + """Slowest"""
+                                    +"Slowest"
                                 }
                                 a(classes = "item sidebar_sub_text_color") {
                                     id = "sidebar_traces_link_failed"
                                     href = "traces"
-                                    + """Failed"""
+                                    +"Failed"
                                 }
                             }
                             a(classes = "item inactive_tab") {
                                 id = "sidebar_configuration_link"
                                 href = "configuration"
-                                + """Configuration"""
+                                +"""Configuration"""
                             }
                         }
                         div("ui dropdown item openbtn") {
-                            div("white_color") {
-                                i("icon demo-icon content") {
-                                }
+                            i("icon demo-icon content white_color") {
                             }
                         }
                         a(classes = "ui dropdown item active_tab") {
@@ -85,17 +81,17 @@ class OverviewPage {
                                 a(classes = "item") {
                                     id = "traces_link_latest"
                                     href = "traces"
-                                    span("menu_tooltip_text") { + """Latest"""}
+                                    span("menu_tooltip_text") { +"Latest" }
                                 }
                                 a(classes = "item") {
                                     id = "traces_link_slowest"
                                     href = "traces"
-                                    span("menu_tooltip_text") { + """Slowest"""}
+                                    span("menu_tooltip_text") { +"Slowest" }
                                 }
                                 a(classes = "item") {
                                     id = "traces_link_failed"
                                     href = "traces"
-                                    span("menu_tooltip_text") { + """Failed"""}
+                                    span("menu_tooltip_text") { +"Failed" }
                                 }
                             }
                         }
@@ -117,27 +113,27 @@ class OverviewPage {
                                             div("item") {
                                                 id = "last_5_minutes_time"
                                                 onClick = "updateTime('last_5_minutes')"
-                                                span("menu_tooltip_text") { + """LAST 5 MINUTES"""}
+                                                span("menu_tooltip_text") { +"""LAST 5 MINUTES""" }
                                             }
                                             div("item") {
                                                 id = "last_15_minutes_time"
                                                 onClick = "updateTime('last_15_minutes')"
-                                                span("menu_tooltip_active_text") { + """LAST 15 MINUTES"""}
+                                                span("menu_tooltip_active_text") { +"""LAST 15 MINUTES""" }
                                             }
                                             div("item") {
                                                 id = "last_30_minutes_time"
                                                 onClick = "updateTime('last_30_minutes')"
-                                                span("menu_tooltip_text") { + """LAST 30 MINUTES"""}
+                                                span("menu_tooltip_text") { +"""LAST 30 MINUTES""" }
                                             }
                                             div("item") {
                                                 id = "last_hour_time"
                                                 onClick = "updateTime('last_hour')"
-                                                span("menu_tooltip_text") { + """LAST HOUR"""}
+                                                span("menu_tooltip_text") { +"""LAST HOUR""" }
                                             }
                                             div("item") {
                                                 id = "last_3_hours_time"
                                                 onClick = "updateTime('last_3_hours')"
-                                                span("menu_tooltip_text") { + """LAST 3 HOURS"""}
+                                                span("menu_tooltip_text") { +"""LAST 3 HOURS""" }
                                             }
                                         }
                                     }
@@ -158,8 +154,10 @@ class OverviewPage {
                             div("twelve wide stretched column") {
                                 div("ui equal height grid") {
                                     div("one column row padding_top_bottom") {
-                                        div("column padding_left_right full_height") {
-                                            id = "overview_chart"
+                                        div("column padding_left_right") {
+                                            div("full_height") {
+                                                id = "overview_chart"
+                                            }
                                         }
                                     }
                                 }
@@ -169,30 +167,26 @@ class OverviewPage {
                                     div("item") {
                                         div("ui mini statistic") {
                                             onClick = "clickedViewAverageThroughputChart()"
-                                            div("value") {
-                                                div("align_left") {
-                                                    id = "card_throughput_average_header"
-                                                    + """n/a"""
-                                                }
+                                            div("value align_left") {
+                                                id = "card_throughput_average_header"
+                                                +"""n/a"""
                                             }
                                             div("label") {
                                                 id = "card_throughput_average_header_label"
-                                                + """AVG THROUGHPUT"""
+                                                +"""AVG THROUGHPUT"""
                                             }
                                         }
                                     }
                                     div("item") {
                                         div("ui mini statistic") {
                                             onClick = "clickedViewAverageResponseTimeChart()"
-                                            div("value spp_red_color") {
-                                                div("align_left") {
-                                                    id = "card_responsetime_average_header"
-                                                    + """n/a"""
-                                                }
+                                            div("value spp_red_color align_left") {
+                                                id = "card_responsetime_average_header"
+                                                +"""n/a"""
                                             }
                                             div("label spp_red_color") {
                                                 id = "card_responsetime_average_header_label"
-                                                + """AVG RESP TIME"""
+                                                +"""AVG RESP TIME"""
                                             }
                                         }
                                     }
@@ -200,14 +194,12 @@ class OverviewPage {
                                         div("ui mini statistic") {
                                             onClick = "clickedViewAverageSLAChart()"
                                             div("value align_left") {
-                                                div("align_left") {
-                                                    id = "card_servicelevelagreement_average_header"
-                                                    + """n/a"""
-                                                }
+                                                id = "card_servicelevelagreement_average_header"
+                                                +"""n/a"""
                                             }
                                             div("label") {
                                                 id = "card_servicelevelagreement_average_header_label"
-                                                + """AVG SLA"""
+                                                +"""AVG SLA"""
                                             }
                                         }
                                     }

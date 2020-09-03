@@ -65,7 +65,7 @@
 }
 
 .openbtn_background_white {
-    background-color: #ffffff;
+    background-color: #ffffff !important;
     height: 45px !important;
 }
 
@@ -75,7 +75,7 @@
 
 .menu_style {
     border-radius: 0 !important;
-    border: 0;
+    border: 0 !important;
     margin-left: 260px;
     -webkit-transition-duration: 0.1s;
     align-content: center;
@@ -83,10 +83,10 @@
 
 .menu_style_2 {
     border-radius: 0 !important;
-    border: 0;
+    border: 0 !important;
     -webkit-transition-duration: 0.1s;
     height: 45px;
-    margin-bottom: 0;
+    margin-bottom: 0 !important;
 }
 
 .menu_style_3 {
@@ -102,8 +102,8 @@
 }
 
 .spp_font_margin {
-    font-size: 20px;
-    margin-top: -2px;
+    font-size: 20px !important;;
+    margin-top: -2px !important;;
 }
 
 .no_top_margin {
@@ -116,13 +116,13 @@
 }
 
 .padding_top_bottom {
-    padding-top: 7px;
-    padding-bottom: 0;
+    padding-top: 7px !important;
+    padding-bottom: 0 !important;
 }
 
 .padding_left_right {
-    padding-left: 0;
-    padding-right: 0;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
 }
 
 .full_height {
@@ -138,7 +138,7 @@
 }
 
 .align_left {
-    text-align: left;
+    text-align: left !important;
 }
 
 .input_width {
@@ -155,7 +155,7 @@
 
 .hidden_full_height {
     visibility: hidden;
-    margin-top: 0;
+    margin-top: 0 !important;
 }
 
 .no_padding_top {
@@ -163,14 +163,14 @@
 }
 
 .trace_th {
-    padding-top: 5px;
-    padding-bottom: 5px;
+    padding-top: 5px !important;
+    padding-bottom: 5px !important;
 }
 
 .trace_th_center {
-    padding-top: 5px;
-    padding-bottom: 5px;
-    text-align: center;
+    padding-top: 5px !important;
+    padding-bottom: 5px !important;
+    text-align: center !important;
 }
 
 .no_padding {

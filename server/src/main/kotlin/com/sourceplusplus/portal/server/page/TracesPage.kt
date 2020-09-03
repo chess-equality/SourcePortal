@@ -28,10 +28,8 @@ class TracesPage {
                     div("ui sidebar vertical left menu overlay visible very thin icon spp_blue webkit_transition") {
                         style = "overflow: visible !important;"
                         div("ui accordion displaynone") {
-                            div("openbtn_background_white") {
-                                a(classes = "item openbtn") {
-                                    + """Close menu"""
-                                }
+                            a(classes = "item openbtn openbtn_background_white") {
+                                + """Close menu"""
                             }
                             a(classes = "item inactive_tab") {
                                 id = "sidebar_overview_link"
@@ -47,17 +45,17 @@ class TracesPage {
                                 a(classes = "item sidebar_sub_text_color") {
                                     id = "sidebar_traces_link_latest"
                                     href = "traces"
-                                    + """Latest"""
+                                    + "Latest"
                                 }
                                 a(classes = "item sidebar_sub_text_color") {
                                     id = "sidebar_traces_link_slowest"
                                     href = "traces"
-                                    + """Slowest"""
+                                    + "Slowest"
                                 }
                                 a(classes = "item sidebar_sub_text_color") {
                                     id = "sidebar_traces_link_failed"
                                     href = "traces"
-                                    + """Failed"""
+                                    + "Failed"
                                 }
                             }
                             a(classes = "item inactive_tab") {
@@ -67,9 +65,7 @@ class TracesPage {
                             }
                         }
                         div("ui dropdown item openbtn") {
-                            div("white_color") {
-                                i("icon demo-icon content") {
-                                }
+                            i("icon demo-icon content white_color") {
                             }
                         }
                         a(classes = "ui item hide_on_toggle") {
@@ -88,19 +84,19 @@ class TracesPage {
                                 a(classes = "item") {
                                     id = "traces_link_latest"
                                     href = "traces"
-                                    span("menu_tooltip_text") { + """Latest"""}
+                                    span("menu_tooltip_text") { + "Latest"}
                                 }
                                 a(classes = "item") {
                                     id = "traces_link_slowest"
                                     href = "traces"
-                                    span("menu_tooltip_text") { + """Slowest"""}
+                                    span("menu_tooltip_text") { + "Slowest"}
                                 }
                                 div("dropdown-divider") {
                                 }
                                 a(classes = "item") {
                                     id = "traces_link_failed"
                                     href = "traces"
-                                    span("menu_tooltip_text") { + """Failed"""}
+                                    span("menu_tooltip_text") { + "Failed"}
                                 }
                             }
                         }

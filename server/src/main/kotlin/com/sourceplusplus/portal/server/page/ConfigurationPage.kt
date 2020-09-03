@@ -12,7 +12,7 @@ class ConfigurationPage {
                     meta {
                         charset = "UTF-8"
                     }
-                    title { + """Configuration - Source++"""}
+                    title { +"""Configuration - Source++""" }
                     link {
                         rel = "stylesheet"
                         href = "semantic.min.css"
@@ -28,44 +28,40 @@ class ConfigurationPage {
                     div("ui sidebar vertical left menu overlay visible very thin icon spp_blue webkit_transition") {
                         style = "overflow: visible !important;"
                         div("ui accordion displaynone") {
-                            div("openbtn_background_white") {
-                                a(classes = "item openbtn") {
-                                    + """Close menu"""
-                                }
+                            a(classes = "item openbtn openbtn_background_white") {
+                                +"""Close menu"""
                             }
                             a(classes = "item inactive_tab") {
                                 id = "sidebar_overview_link"
                                 href = "overview"
-                                + """Dashboard"""
+                                +"""Dashboard"""
                             }
                             div("title item inactive_tab") {
                                 i("dropdown icon") {
                                 }
-                                + """Traces"""
+                                +"""Traces"""
                             }
                             div("content") {
                                 a(classes = "item sidebar_sub_text_color") {
                                     id = "sidebar_traces_link_latest"
                                     href = "traces"
-                                    + """Latest"""
+                                    +"Latest"
                                 }
                                 a(classes = "item sidebar_sub_text_color") {
                                     id = "sidebar_traces_link_slowest"
                                     href = "traces"
-                                    + """Slowest"""
+                                    +"Slowest"
                                 }
                                 a(classes = "item sidebar_sub_text_color") {
                                     id = "sidebar_traces_link_failed"
                                     href = "traces"
-                                    + """Failed"""
+                                    +"Failed"
                                 }
                             }
-                            a(classes = "item active_tab") { + """Configuration"""}
+                            a(classes = "item active_tab") { +"""Configuration""" }
                         }
                         div("ui dropdown item openbtn") {
-                            div("white_color") {
-                                i("icon demo-icon content") {
-                                }
+                            i("icon demo-icon content white_color") {
                             }
                         }
                         a(classes = "ui item hide_on_toggle") {
@@ -84,17 +80,17 @@ class ConfigurationPage {
                                 a(classes = "item") {
                                     id = "traces_link_latest"
                                     href = "traces"
-                                    span("menu_tooltip_text") { + """Latest"""}
+                                    span("menu_tooltip_text") { +"Latest" }
                                 }
                                 a(classes = "item") {
                                     id = "traces_link_slowest"
                                     href = "traces"
-                                    span("menu_tooltip_text") { + """Slowest"""}
+                                    span("menu_tooltip_text") { +"Slowest" }
                                 }
                                 a(classes = "item") {
                                     id = "traces_link_failed"
                                     href = "traces"
-                                    span("menu_tooltip_text") { + """Failed"""}
+                                    span("menu_tooltip_text") { +"Failed" }
                                 }
                             }
                         }
@@ -128,7 +124,7 @@ class ConfigurationPage {
                                                     id = "entry_method_checkbox"
                                                     type = InputType.checkBox
                                                 }
-                                                label("secondary_background_color") { + """Entry method"""}
+                                                label("secondary_background_color") { +"""Entry method""" }
                                             }
                                         }
                                         div("field") {
@@ -138,7 +134,7 @@ class ConfigurationPage {
                                                     id = "auto_subscribe_checkbox"
                                                     type = InputType.checkBox
                                                 }
-                                                label("secondary_background_color") { + """Auto-subscribe"""}
+                                                label("secondary_background_color") { +"""Auto-subscribe""" }
                                             }
                                         }
                                     }
@@ -146,48 +142,46 @@ class ConfigurationPage {
                             }
                             div("ten wide column background_color min_height") {
                                 div("margin_right_white ui segments secondary_background_color") {
-                                    div("margin_left_no_padding") {
-                                        table("ui small very compact very basic collapsing celled table") {
-                                            tbody {
-                                                tr {
-                                                    td {
-                                                        h4("ui header secondary_background_color") {
-                                                            div("content") { + """Qualified Name"""}
-                                                        }
-                                                    }
-                                                    td("secondary_background_color") {
-                                                        id = "artifact_qualified_name"
+                                    table("ui small very compact very basic collapsing celled table margin_left_no_padding") {
+                                        tbody {
+                                            tr {
+                                                td {
+                                                    h4("ui header secondary_background_color") {
+                                                        div("content") { +"""Qualified Name""" }
                                                     }
                                                 }
-                                                tr {
-                                                    td {
-                                                        h4("ui header secondary_background_color") {
-                                                            div("content") { + """Create Date"""}
-                                                        }
-                                                    }
-                                                    td("secondary_background_color") {
-                                                        id = "artifact_create_date"
+                                                td("secondary_background_color") {
+                                                    id = "artifact_qualified_name"
+                                                }
+                                            }
+                                            tr {
+                                                td {
+                                                    h4("ui header secondary_background_color") {
+                                                        div("content") { +"""Create Date""" }
                                                     }
                                                 }
-                                                tr {
-                                                    td {
-                                                        h4("ui header secondary_background_color") {
-                                                            div("content") { + """Last Updated"""}
-                                                        }
-                                                    }
-                                                    td("secondary_background_color") {
-                                                        id = "artifact_last_updated"
+                                                td("secondary_background_color") {
+                                                    id = "artifact_create_date"
+                                                }
+                                            }
+                                            tr {
+                                                td {
+                                                    h4("ui header secondary_background_color") {
+                                                        div("content") { +"""Last Updated""" }
                                                     }
                                                 }
-                                                tr {
-                                                    td {
-                                                        h4("ui header secondary_background_color") {
-                                                            div("content") { + """Endpoint"""}
-                                                        }
+                                                td("secondary_background_color") {
+                                                    id = "artifact_last_updated"
+                                                }
+                                            }
+                                            tr {
+                                                td {
+                                                    h4("ui header secondary_background_color") {
+                                                        div("content") { +"""Endpoint""" }
                                                     }
-                                                    td("secondary_background_color") {
-                                                        id = "artifact_endpoint"
-                                                    }
+                                                }
+                                                td("secondary_background_color") {
+                                                    id = "artifact_endpoint"
                                                 }
                                             }
                                         }
