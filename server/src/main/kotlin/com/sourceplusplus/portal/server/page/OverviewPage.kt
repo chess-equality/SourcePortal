@@ -159,9 +159,8 @@ class OverviewPage {
                             div("twelve wide stretched column") {
                                 div("ui equal height grid") {
                                     div("one column row padding_top_bottom") {
-                                        div("column padding_left_right") {
+                                        div("column padding_left_right full_height") {
                                             id = "overview_chart"
-                                            style = "height: 100%;"
                                         }
                                     }
                                 }
