@@ -76,7 +76,7 @@ class ConfigurationPage {
                             }
                             i("icon demo-icon code") {
                             }
-                            div("menu background_color") {
+                            div("menu secondary_background_color") {
                                 a(classes = "item") {
                                     id = "traces_link_latest"
                                     href = "traces"
@@ -141,7 +141,7 @@ class ConfigurationPage {
                                 }
                             }
                             div("ten wide column background_color min_height") {
-                                div("margin_right_white ui segments secondary_background_color") {
+                                div("ui segments secondary_background_color margin_right_white") {
                                     table("ui small very compact very basic collapsing celled table margin_left_no_padding") {
                                         tbody {
                                             tr {

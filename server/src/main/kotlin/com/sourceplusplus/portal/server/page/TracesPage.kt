@@ -80,7 +80,7 @@ class TracesPage {
                             }
                             i("icon demo-icon code") {
                             }
-                            div("menu background_color") {
+                            div("menu secondary_background_color") {
                                 a(classes = "item") {
                                     id = "traces_link_latest"
                                     href = "traces"
