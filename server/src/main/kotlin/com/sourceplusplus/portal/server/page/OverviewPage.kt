@@ -1,5 +1,10 @@
 package com.sourceplusplus.portal.server.page
 
+import com.sourceplusplus.portal.server.template.menu
+import com.sourceplusplus.portal.server.template.leftNav
+import com.sourceplusplus.portal.server.template.mainContent
+import com.sourceplusplus.portal.server.template.sidebar
+import com.sourceplusplus.portal.server.template.tabs
 import kotlinx.html.*
 import kotlinx.html.stream.appendHTML
 
@@ -28,81 +33,13 @@ class OverviewPage {
                     }
                 }
                 body("overflow_y_hidden") {
-                    div("ui sidebar vertical left menu overlay visible very thin icon spp_blue webkit_transition") {
-                        style = "overflow: visible !important;"
-                        div("ui accordion displaynone") {
-                            a(classes = "item openbtn openbtn_background_white") {
-                                +"""Close menu"""
-                            }
-                            a(classes = "item active_tab") { +"""Dashboard""" }
-                            div("title item inactive_tab") {
-                                i("dropdown icon") {
-                                }
-                                +"""Traces"""
-                            }
-                            div("content") {
-                                a(classes = "item sidebar_sub_text_color") {
-                                    id = "sidebar_traces_link_latest"
-                                    href = "traces"
-                                    +"Latest"
-                                }
-                                a(classes = "item sidebar_sub_text_color") {
-                                    id = "sidebar_traces_link_slowest"
-                                    href = "traces"
-                                    +"Slowest"
-                                }
-                                a(classes = "item sidebar_sub_text_color") {
-                                    id = "sidebar_traces_link_failed"
-                                    href = "traces"
-                                    +"Failed"
-                                }
-                            }
-                            a(classes = "item inactive_tab") {
-                                id = "sidebar_configuration_link"
-                                href = "configuration"
-                                +"""Configuration"""
-                            }
-                        }
-                        div("ui dropdown item openbtn") {
-                            i("icon demo-icon content white_color") {
-                            }
-                        }
-                        a(classes = "ui dropdown item active_tab") {
-                            i("icon demo-icon dashboard") {
-                            }
-                        }
-                        div("ui dropdown item inactive_tab") {
-                            unsafe {
-                                +"""<z class="displaynone">Traces</z>"""
-                            }
-                            i("icon demo-icon code") {
-                            }
-                            div("menu secondary_background_color") {
-                                a(classes = "item") {
-                                    id = "traces_link_latest"
-                                    href = "traces"
-                                    span("menu_tooltip_text") { +"Latest" }
-                                }
-                                a(classes = "item") {
-                                    id = "traces_link_slowest"
-                                    href = "traces"
-                                    span("menu_tooltip_text") { +"Slowest" }
-                                }
-                                a(classes = "item") {
-                                    id = "traces_link_failed"
-                                    href = "traces"
-                                    span("menu_tooltip_text") { +"Failed" }
-                                }
-                            }
-                        }
-                        a(classes = "ui item hide_on_toggle") {
-                            id = "configuration_link"
-                            href = "configuration"
-                            i("icon configure inactive_tab") {
-                            }
+                    leftNav {
+                        menu {}
+                        sidebar {
+                            tabs {}
                         }
                     }
-                    div("pusher") {
+                    mainContent {
                         div("ui menu fixed asd marginlefting middle aligned content menu_style") {
                             div("ui sidebar horizontal top menu fixed overlay visible very thin icon background_color webkit_transition") {
                                 style = "overflow: visible !important;"
