@@ -1,5 +1,6 @@
 package com.sourceplusplus.portal.server.page
 
+import com.sourceplusplus.portal.server.template.*
 import kotlinx.html.*
 import kotlinx.html.stream.appendHTML
 
@@ -9,101 +10,20 @@ class TracesPage {
             appendLine("<!DOCTYPE html>")
             appendHTML().html {
                 head {
-                    meta {
-                        charset = "UTF-8"
-                    }
-                    title { + """Traces - Source++"""}
-                    link {
-                        rel = "stylesheet"
-                        href = "semantic.min.css"
-                    }
-                    script {
-                        src = "jquery-3.5.1.min.js"
-                    }
-                    script {
-                        src = "portal_theme.js"
-                    }
+                    tracesHead("Traces - Source++") {}
                 }
                 body {
-                    div("ui sidebar vertical left menu overlay visible very thin icon spp_blue webkit_transition") {
-                        style = "overflow: visible !important;"
-                        div("ui accordion displaynone") {
-                            a(classes = "item openbtn openbtn_background_white") {
-                                + """Close menu"""
-                            }
-                            a(classes = "item inactive_tab") {
-                                id = "sidebar_overview_link"
-                                href = "overview"
-                                + """Dashboard"""
-                            }
-                            div("title item active_tab") {
-                                i("dropdown icon") {
-                                }
-                                + """Traces"""
-                            }
-                            div("content") {
-                                a(classes = "item sidebar_sub_text_color") {
-                                    id = "sidebar_traces_link_latest"
-                                    href = "traces"
-                                    + "Latest"
-                                }
-                                a(classes = "item sidebar_sub_text_color") {
-                                    id = "sidebar_traces_link_slowest"
-                                    href = "traces"
-                                    + "Slowest"
-                                }
-                                a(classes = "item sidebar_sub_text_color") {
-                                    id = "sidebar_traces_link_failed"
-                                    href = "traces"
-                                    + "Failed"
-                                }
-                            }
-                            a(classes = "item inactive_tab") {
-                                id = "sidebar_configuration_link"
-                                href = "configuration"
-                                + """Configuration"""
-                            }
+                    leftNav {
+                        menu {
+                            dashboardMenuItem(isActive = false)
+                            tracesMenuItem(isActive = true)
+                            configurationMenuItem(isActive = false)
                         }
-                        div("ui dropdown item openbtn") {
-                            i("icon demo-icon content white_color") {
-                            }
-                        }
-                        a(classes = "ui item hide_on_toggle") {
-                            id = "overview_link"
-                            href = "overview"
-                            i("icon demo-icon dashboard inactive_tab") {
-                            }
-                        }
-                        div("ui dropdown item active_tab") {
-                            unsafe {
-                                +"""<z class="displaynone">Traces</z>"""
-                            }
-                            i("icon demo-icon code") {
-                            }
-                            div("menu secondary_background_color") {
-                                a(classes = "item") {
-                                    id = "traces_link_latest"
-                                    href = "traces"
-                                    span("menu_tooltip_text") { + "Latest"}
-                                }
-                                a(classes = "item") {
-                                    id = "traces_link_slowest"
-                                    href = "traces"
-                                    span("menu_tooltip_text") { + "Slowest"}
-                                }
-                                div("dropdown-divider") {
-                                }
-                                a(classes = "item") {
-                                    id = "traces_link_failed"
-                                    href = "traces"
-                                    span("menu_tooltip_text") { + "Failed"}
-                                }
-                            }
-                        }
-                        a(classes = "ui item hide_on_toggle") {
-                            id = "configuration_link"
-                            href = "configuration"
-                            i("icon configure inactive_tab") {
+                        sidebar {
+                            tabs {
+                                overviewTab(isActive = false)
+                                tracesTab(isActive = true)
+                                configurationTab(isActive = false)
                             }
                         }
                     }
@@ -301,30 +221,7 @@ class TracesPage {
                             }
                         }
                     }
-                    script {
-                        src = "semantic.min.js"
-                    }
-                    script {
-                        src = "themes/default/assets/all.min.js"
-                    }
-                    script {
-                        src = "moment.min.js"
-                    }
-                    script {
-                        src = "sockjs.min.js"
-                    }
-                    script {
-                        src = "vertx-eventbus.min.js"
-                    }
-                    script {
-                        src = "source_eventbus_bridge.js"
-                    }
-                    script {
-                        src = "js/traces.js"
-                    }
-                    script {
-                        src = "js/views/traces_view.js"
-                    }
+                    tracesScripts()
                 }
             }
         }
