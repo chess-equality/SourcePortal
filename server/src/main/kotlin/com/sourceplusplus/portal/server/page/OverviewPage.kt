@@ -27,7 +27,10 @@ class OverviewPage {
                             }
                         }
                     }
-                    mainContent {}
+                    mainContent {
+                        navBar {}
+                        areaChart {}
+                    }
                     overviewScripts()
                 }
             }
