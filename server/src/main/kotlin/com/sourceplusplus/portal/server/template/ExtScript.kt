@@ -19,7 +19,6 @@ private fun FlowContent.commonExtScripts() {
     script {
         src = "source_eventbus_bridge.js"
     }
-
 }
 
 fun FlowContent.overviewScripts() {
