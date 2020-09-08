@@ -35,10 +35,10 @@ fun FlowContent.overviewScripts() {
 fun FlowContent.tracesScripts() {
     commonExtScripts()
     script {
-        src = "js/overview.js"
+        src = "js/traces.js"
     }
     script {
-        src = "js/views/overview_view.js"
+        src = "js/views/traces_view.js"
     }
     script {
         src = "themes/default/assets/all.min.js"
