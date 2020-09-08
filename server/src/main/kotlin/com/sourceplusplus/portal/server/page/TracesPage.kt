@@ -20,7 +20,9 @@ class TracesPage {
                         sidebar {
                             tabs {
                                 overviewTab(isActive = false)
-                                tracesTab(isActive = true)
+                                tracesTab(isActive = true) { activeClass ->
+                                    traces(activeClass, LATEST, SLOWEST, FAILED)
+                                }
                                 configurationTab(isActive = false)
                             }
                         }

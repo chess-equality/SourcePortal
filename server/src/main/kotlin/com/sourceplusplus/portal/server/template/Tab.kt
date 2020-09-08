@@ -22,36 +22,12 @@ fun FlowContent.overviewTab(isActive: Boolean) {
     }
 }
 
-fun FlowContent.tracesTab(isActive: Boolean) {
+fun FlowContent.tracesTab(isActive: Boolean, block: FlowContent.(activeClass: String) -> Unit) {
     var activeClass = "active_tab"
     if (!isActive) {
         activeClass = "inactive_tab"
     }
-    div("ui dropdown item") {
-        classes = classes.plus(activeClass)
-        unsafe {
-            +"""<z class="displaynone">Traces</z>"""
-        }
-        i("icon demo-icon code") {
-        }
-        div("menu secondary_background_color") {
-            a(classes = "item") {
-                id = "traces_link_latest"
-                href = "traces"
-                span("menu_tooltip_text") { +"Latest" }
-            }
-            a(classes = "item") {
-                id = "traces_link_slowest"
-                href = "traces"
-                span("menu_tooltip_text") { +"Slowest" }
-            }
-            a(classes = "item") {
-                id = "traces_link_failed"
-                href = "traces"
-                span("menu_tooltip_text") { +"Failed" }
-            }
-        }
-    }
+    block(activeClass)
 }
 
 fun FlowContent.configurationTab(isActive: Boolean) {
@@ -67,5 +43,45 @@ fun FlowContent.configurationTab(isActive: Boolean) {
             i("icon configure inactive_tab") {
             }
         }
+    }
+}
+
+fun FlowContent.traces(activeClass: String = "", vararg blocks: FlowContent.() -> Unit) {
+    div("ui dropdown item") {
+        classes = classes.plus(activeClass)
+        unsafe {
+            +"""<z class="displaynone">Traces</z>"""
+        }
+        i("icon demo-icon code") {
+        }
+        div("menu secondary_background_color") {
+            for (block in blocks) {
+                block()
+            }
+        }
+    }
+}
+
+val LATEST: FlowContent.() -> Unit = fun FlowContent.() {
+    a(classes = "item") {
+        id = "traces_link_latest"
+        href = "traces"
+        span("menu_tooltip_text") { +"Latest" }
+    }
+}
+
+val SLOWEST: FlowContent.() -> Unit = fun FlowContent.() {
+    a(classes = "item") {
+        id = "traces_link_slowest"
+        href = "traces"
+        span("menu_tooltip_text") { +"Slowest" }
+    }
+}
+
+val FAILED: FlowContent.() -> Unit = fun FlowContent.() {
+    a(classes = "item") {
+        id = "traces_link_failed"
+        href = "traces"
+        span("menu_tooltip_text") { +"Failed" }
     }
 }

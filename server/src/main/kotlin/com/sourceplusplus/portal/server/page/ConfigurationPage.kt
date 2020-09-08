@@ -20,7 +20,9 @@ class ConfigurationPage {
                         sidebar {
                             tabs {
                                 overviewTab(isActive = false)
-                                tracesTab(isActive = false)
+                                tracesTab(isActive = false) { activeClass ->
+                                    traces(activeClass, LATEST, SLOWEST, FAILED)
+                                }
                                 configurationTab(isActive = true)
                             }
                         }
@@ -35,9 +37,9 @@ class ConfigurationPage {
     }
 }
 
-fun HTML.configurationPage(title: String = "Traces - Source++", bodyClass: String = "", block: FlowContent.() -> Unit) {
+fun HTML.configurationPage(title: String = "Configuration - Source++", bodyClass: String = "", block: FlowContent.() -> Unit) {
     head {
-        configurationHead("Configuration - Source++") {}
+        configurationHead(title) {}
     }
     body(bodyClass) {
         block()
