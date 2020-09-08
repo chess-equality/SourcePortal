@@ -1,5 +1,6 @@
 package com.sourceplusplus.portal.server.page
 
+import com.sourceplusplus.portal.server.portal
 import com.sourceplusplus.portal.server.template.*
 import kotlinx.html.*
 import kotlinx.html.stream.appendHTML
@@ -8,11 +9,8 @@ class ConfigurationPage {
     fun renderPage(): String {
         return buildString {
             appendLine("<!DOCTYPE html>")
-            appendHTML().html {
-                head {
-                    configurationHead("Configuration - Source++") {}
-                }
-                body {
+            appendHTML().portal {
+                configurationPage {
                     leftNav {
                         menu {
                             dashboardMenuItem(isActive = false)
@@ -34,5 +32,14 @@ class ConfigurationPage {
                 }
             }
         }
+    }
+}
+
+fun HTML.configurationPage(title: String = "Traces - Source++", bodyClass: String = "", block: FlowContent.() -> Unit) {
+    head {
+        configurationHead("Configuration - Source++") {}
+    }
+    body(bodyClass) {
+        block()
     }
 }
