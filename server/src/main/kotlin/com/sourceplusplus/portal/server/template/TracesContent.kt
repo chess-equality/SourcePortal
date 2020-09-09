@@ -9,7 +9,7 @@ fun FlowContent.traces(block: FlowContent.() -> Unit) {
             onClick = "clickedBackToTraces()"
             span {
                 id = "latest_traces_header_text"
-                + """Latest Traces"""
+                + "Latest Traces"
             }
             div("menu") {
                 id = "latest_traces_menu"
@@ -38,7 +38,7 @@ fun FlowContent.traces(block: FlowContent.() -> Unit) {
                 div("ui input item align_center") {
                     label {
                         id = "traces_total_label"
-                        + """Total: 0"""
+                        + "Total: 0"
                     }
                 }
             }
@@ -48,7 +48,7 @@ fun FlowContent.traces(block: FlowContent.() -> Unit) {
             onClick = "clickedBackToTraceStack()"
             span {
                 id = "trace_stack_header_text"
-                + """Trace Stack"""
+                + "Trace Stack"
             }
             div("menu") {
                 id = "trace_stack_menu"
@@ -78,7 +78,7 @@ fun FlowContent.traces(block: FlowContent.() -> Unit) {
             id = "span_info_header"
             span {
                 id = "span_info_header_text"
-                + """Span Info"""
+                + "Span Info"
             }
         }
         div("right menu align_content_center") {
@@ -97,16 +97,16 @@ fun FlowContent.traces(block: FlowContent.() -> Unit) {
             thead {
                 tr {
                     th(classes = "secondary_background_color trace_th") {
-                        + """Operation"""
+                        + "Operation"
                     }
                     th(classes = "secondary_background_color trace_th_center") {
-                        + """Occurred"""
+                        + "Occurred"
                     }
                     th(classes = "secondary_background_color trace_th_center") {
-                        + """Exec"""
+                        + "Exec"
                     }
                     th(classes = "secondary_background_color trace_th_center") {
-                        + """Status"""
+                        + "Status"
                     }
                 }
             }
@@ -119,16 +119,16 @@ fun FlowContent.traces(block: FlowContent.() -> Unit) {
             thead("secondary_background_color") {
                 tr {
                     th(classes = "secondary_background_color trace_th") {
-                        + """Operation"""
+                        + "Operation"
                     }
                     th(classes = "secondary_background_color trace_th_center") {
-                        + """Exec"""
+                        + "Exec"
                     }
                     th(classes = "secondary_background_color trace_th_center") {
-                        + """Exec (%)"""
+                        + "Exec (%)"
                     }
                     th(classes = "secondary_background_color trace_th_center") {
-                        + """Status"""
+                        + "Status"
                     }
                 }
             }
@@ -141,26 +141,26 @@ fun FlowContent.traces(block: FlowContent.() -> Unit) {
             div("ui segments") {
                 div("ui segment span_segment_background") {
                     p {
-                        + """Start time:"""
+                        + "Start time:"
                         span {
                             id = "span_info_start_time"
                         }
-                        + """("""
+                        + "("
                         span("trace_time") {
                             id = "span_info_start_trace_time"
                         }
-                        + """)"""
+                        + ")"
                     }
                     p {
-                        + """Start time:"""
+                        + "Start time:"
                         span {
                             id = "span_info_end_time"
                         }
-                        + """("""
+                        + "("
                         span("trace_time") {
                             id = "span_info_end_trace_time"
                         }
-                        + """)"""
+                        + ")"
                     }
                 }
                 div("ui segment displaynone no_padding") {
@@ -169,8 +169,8 @@ fun FlowContent.traces(block: FlowContent.() -> Unit) {
                         id = "span_tag_table"
                         thead {
                             tr {
-                                th { + """Tag"""}
-                                th { + """Value"""}
+                                th { + "Tag"}
+                                th { + "Value"}
                             }
                         }
                         tbody {
@@ -184,7 +184,7 @@ fun FlowContent.traces(block: FlowContent.() -> Unit) {
                         id = "log_tag_table"
                         thead {
                             tr {
-                                th { + """Trace Logs"""}
+                                th { + "Trace Logs"}
                             }
                         }
                         tbody {
