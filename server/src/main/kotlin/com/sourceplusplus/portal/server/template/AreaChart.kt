@@ -23,11 +23,11 @@ fun FlowContent.areaChart(classes: String = "ui padded equal height grid backgro
                         onClick = "clickedViewAverageThroughputChart()"
                         div("value align_left") {
                             id = "card_throughput_average_header"
-                            +"""n/a"""
+                            +"n/a"
                         }
                         div("label") {
                             id = "card_throughput_average_header_label"
-                            +"""AVG THROUGHPUT"""
+                            +"AVG THROUGHPUT"
                         }
                     }
                 }
@@ -36,11 +36,11 @@ fun FlowContent.areaChart(classes: String = "ui padded equal height grid backgro
                         onClick = "clickedViewAverageResponseTimeChart()"
                         div("value spp_red_color align_left") {
                             id = "card_responsetime_average_header"
-                            +"""n/a"""
+                            +"n/a"
                         }
                         div("label spp_red_color") {
                             id = "card_responsetime_average_header_label"
-                            +"""AVG RESP TIME"""
+                            +"AVG RESP TIME"
                         }
                     }
                 }
@@ -49,11 +49,11 @@ fun FlowContent.areaChart(classes: String = "ui padded equal height grid backgro
                         onClick = "clickedViewAverageSLAChart()"
                         div("value align_left") {
                             id = "card_servicelevelagreement_average_header"
-                            +"""n/a"""
+                            +"n/a"
                         }
                         div("label") {
                             id = "card_servicelevelagreement_average_header_label"
-                            +"""AVG SLA"""
+                            +"AVG SLA"
                         }
                     }
                 }

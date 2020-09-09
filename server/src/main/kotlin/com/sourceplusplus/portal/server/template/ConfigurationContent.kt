@@ -27,7 +27,7 @@ fun FlowContent.configuration(block: FlowContent.() -> Unit) {
                                 id = "entry_method_checkbox"
                                 type = InputType.checkBox
                             }
-                            label("secondary_background_color") { +"""Entry method""" }
+                            label("secondary_background_color") { +"Entry method" }
                         }
                     }
                     div("field") {
@@ -37,7 +37,7 @@ fun FlowContent.configuration(block: FlowContent.() -> Unit) {
                                 id = "auto_subscribe_checkbox"
                                 type = InputType.checkBox
                             }
-                            label("secondary_background_color") { +"""Auto-subscribe""" }
+                            label("secondary_background_color") { +"Auto-subscribe" }
                         }
                     }
                 }
@@ -50,7 +50,7 @@ fun FlowContent.configuration(block: FlowContent.() -> Unit) {
                         tr {
                             td {
                                 h4("ui header secondary_background_color") {
-                                    div("content") { +"""Qualified Name""" }
+                                    div("content") { +"Qualified Name" }
                                 }
                             }
                             td("secondary_background_color") {
@@ -60,7 +60,7 @@ fun FlowContent.configuration(block: FlowContent.() -> Unit) {
                         tr {
                             td {
                                 h4("ui header secondary_background_color") {
-                                    div("content") { +"""Create Date""" }
+                                    div("content") { +"Create Date" }
                                 }
                             }
                             td("secondary_background_color") {
@@ -70,7 +70,7 @@ fun FlowContent.configuration(block: FlowContent.() -> Unit) {
                         tr {
                             td {
                                 h4("ui header secondary_background_color") {
-                                    div("content") { +"""Last Updated""" }
+                                    div("content") { +"Last Updated" }
                                 }
                             }
                             td("secondary_background_color") {
@@ -80,7 +80,7 @@ fun FlowContent.configuration(block: FlowContent.() -> Unit) {
                         tr {
                             td {
                                 h4("ui header secondary_background_color") {
-                                    div("content") { +"""Endpoint""" }
+                                    div("content") { +"Endpoint" }
                                 }
                             }
                             td("secondary_background_color") {

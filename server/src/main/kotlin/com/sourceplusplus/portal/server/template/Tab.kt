@@ -6,7 +6,7 @@ fun FlowContent.tabs(block: FlowContent.() -> Unit) {
     block()
 }
 
-fun FlowContent.overviewTab(isActive: Boolean) {
+fun FlowContent.overviewTab(isActive: Boolean = false) {
     if (isActive) {
         a(classes = "ui dropdown item active_tab") {
             i("icon demo-icon dashboard") {
@@ -22,7 +22,7 @@ fun FlowContent.overviewTab(isActive: Boolean) {
     }
 }
 
-fun FlowContent.tracesTab(isActive: Boolean, block: FlowContent.(activeClass: String) -> Unit) {
+fun FlowContent.tracesTab(isActive: Boolean = false, block: FlowContent.(activeClass: String) -> Unit) {
     var activeClass = "active_tab"
     if (!isActive) {
         activeClass = "inactive_tab"
@@ -30,7 +30,7 @@ fun FlowContent.tracesTab(isActive: Boolean, block: FlowContent.(activeClass: St
     block(activeClass)
 }
 
-fun FlowContent.configurationTab(isActive: Boolean) {
+fun FlowContent.configurationTab(isActive: Boolean = false) {
     if (isActive) {
         a(classes = "ui dropdown item active_tab") {
             i("icon configure") {
