@@ -74,45 +74,16 @@ enum class MenuItem {
     abstract fun applyThis(flowContent: FlowContent, isActive: Boolean = false, block: FlowContent.() -> Unit)
 }
 
-fun FlowContent.subMenuItem(subMenuItem: SubMenuItem) {
-    subMenuItem.applyThis(this)
+fun FlowContent.subMenuItem(traceType: TraceType) {
+    a(classes = "item sidebar_sub_text_color") {
+        id = "sidebar_traces_link_${traceType.name.toLowerCase()}"
+        href = traceType.name.toLowerCase()
+        +traceType.name
+    }
 }
 
-enum class SubMenuItem {
-    Latest {
-        override fun applyThis(flowContent: FlowContent) {
-            flowContent.apply {
-                a(classes = "item sidebar_sub_text_color") {
-                    id = "sidebar_traces_link_latest"
-                    href = "traces"
-                    +"Latest"
-                }
-            }
-        }
-    },
-    Slowest {
-        override fun applyThis(flowContent: FlowContent) {
-            flowContent.apply {
-                a(classes = "item sidebar_sub_text_color") {
-                    id = "sidebar_traces_link_slowest"
-                    href = "traces"
-                    +"Slowest"
-                }
-            }
-        }
-
-    },
-    Failed {
-        override fun applyThis(flowContent: FlowContent) {
-            flowContent.apply {
-                a(classes = "item sidebar_sub_text_color") {
-                    id = "sidebar_traces_link_failed"
-                    href = "traces"
-                    +"Failed"
-                }
-            }
-        }
-    };
-
-    abstract fun applyThis(flowContent: FlowContent)
+enum class TraceType {
+    Latest,
+    Slowest,
+    Failed
 }
