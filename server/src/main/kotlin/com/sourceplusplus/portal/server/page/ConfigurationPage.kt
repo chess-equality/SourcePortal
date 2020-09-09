@@ -2,6 +2,8 @@ package com.sourceplusplus.portal.server.page
 
 import com.sourceplusplus.portal.server.portal
 import com.sourceplusplus.portal.server.template.*
+import com.sourceplusplus.portal.server.template.MenuItem.*
+import com.sourceplusplus.portal.server.template.SubMenuItem.*
 import kotlinx.html.*
 import kotlinx.html.stream.appendHTML
 
@@ -13,14 +15,18 @@ class ConfigurationPage {
                 configurationPage {
                     leftNav {
                         menu {
-                            dashboardMenuItem(isActive = false)
-                            tracesMenuItem(isActive = false)
-                            configurationMenuItem(isActive = true)
+                            menuItem(Overview) {}
+                            menuItem(Traces) {
+                                subMenuItem(Latest)
+                                subMenuItem(Slowest)
+                                subMenuItem(Failed)
+                            }
+                            menuItem(Configuration, isActive = true) {}
                         }
                         sidebar {
                             tabs {
-                                overviewTab(isActive = false)
-                                tracesTab(isActive = false) { activeClass ->
+                                overviewTab()
+                                tracesTab { activeClass ->
                                     traces(activeClass, LATEST, SLOWEST, FAILED)
                                 }
                                 configurationTab(isActive = true)

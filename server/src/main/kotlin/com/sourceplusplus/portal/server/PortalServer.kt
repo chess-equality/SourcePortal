@@ -88,4 +88,5 @@ class PortalServer : CoroutineVerticle() {
     }
 }
 
-fun <T, C : TagConsumer<T>> C.portal(namespace : String? = null, block : HTML.() -> Unit = {}) : T = HTML(kotlinx.html.emptyMap, this, namespace).visitAndFinalize(this, block)
+fun <T, C : TagConsumer<T>> C.portal(namespace : String? = null, block : HTML.() -> Unit = {}) :
+        T = HTML(kotlinx.html.emptyMap, this, namespace).visitAndFinalize(this, block)
