@@ -33,7 +33,7 @@ class TracesPage {
                             }
                         }
                     }
-                    tracesContent("pusher background_color") {
+                    tracesContent {
                         tracesNavBar {
                             leftAlign {
                                 tracesHeader()

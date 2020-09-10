@@ -33,7 +33,7 @@ class ConfigurationPage {
                             }
                         }
                     }
-                    configurationContent("pusher background_color") {
+                    configurationContent {
                         configurationNavBar {
                             rightAlign {
                                 externalPortalButton()
