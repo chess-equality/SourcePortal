@@ -17,9 +17,9 @@ class TracesPage {
                         menu {
                             menuItem(Overview) {}
                             menuItem(Traces, isActive = true) {
-                                subMenuItem(LATEST)
-                                subMenuItem(SLOWEST)
-                                subMenuItem(FAILED)
+                                subMenuItem(Latest)
+                                subMenuItem(Slowest)
+                                subMenuItem(Failed)
                             }
                             menuItem(Configuration) {}
                         }
@@ -27,7 +27,7 @@ class TracesPage {
                             tabs {
                                 overviewTab()
                                 tracesTab(isActive = true) { activeClass ->
-                                    traces(activeClass, LATEST, SLOWEST, FAILED)
+                                    traces(activeClass, Latest, Slowest, Failed)
                                 }
                                 configurationTab()
                             }

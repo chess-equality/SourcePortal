@@ -76,8 +76,8 @@ enum class MenuItem {
 
 fun FlowContent.subMenuItem(traceType: TraceType) {
     a(classes = "item sidebar_sub_text_color") {
-        id = "sidebar_traces_link_${traceType.name.toLowerCase()}"
-        href = traceType.name.toLowerCase()
-        +traceType.name.toLowerCase().capitalize()
+        id = "sidebar_traces_link_${traceType.id}"
+        href = traceType.id
+        +traceType.name
     }
 }

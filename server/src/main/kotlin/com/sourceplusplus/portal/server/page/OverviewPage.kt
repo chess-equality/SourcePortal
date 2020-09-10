@@ -18,9 +18,9 @@ class OverviewPage {
                         menu {
                             menuItem(Overview, isActive = true) {}
                             menuItem(Traces) {
-                                subMenuItem(LATEST)
-                                subMenuItem(SLOWEST)
-                                subMenuItem(FAILED)
+                                subMenuItem(Latest)
+                                subMenuItem(Slowest)
+                                subMenuItem(Failed)
                             }
                             menuItem(Configuration) {}
                         }
@@ -28,7 +28,7 @@ class OverviewPage {
                             tabs {
                                 overviewTab(isActive = true)
                                 tracesTab { activeClass ->
-                                    traces(activeClass, LATEST, SLOWEST, FAILED)
+                                    traces(activeClass, Latest, Slowest, Failed)
                                 }
                                 configurationTab()
                             }

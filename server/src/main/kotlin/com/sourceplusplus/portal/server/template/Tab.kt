@@ -57,9 +57,9 @@ fun FlowContent.traces(activeClass: String = "", vararg traceTypes: TraceType = 
         div("menu secondary_background_color") {
             for (traceType in traceTypes) {
                 a(classes = "item") {
-                    id = "traces_link_${traceType.name.toLowerCase()}"
-                    href = traceType.name.toLowerCase()
-                    span("menu_tooltip_text") { +traceType.name.toLowerCase().capitalize() }
+                    id = "traces_link_${traceType.id}"
+                    href = traceType.id
+                    span("menu_tooltip_text") { +traceType.name }
                 }
             }
         }
@@ -67,7 +67,9 @@ fun FlowContent.traces(activeClass: String = "", vararg traceTypes: TraceType = 
 }
 
 enum class TraceType {
-    LATEST,
-    SLOWEST,
-    FAILED;
+    Latest,
+    Slowest,
+    Failed;
+
+    val id = name.toLowerCase()
 }
