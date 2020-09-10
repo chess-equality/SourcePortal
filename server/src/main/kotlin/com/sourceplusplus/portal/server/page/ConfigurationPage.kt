@@ -27,7 +27,7 @@ class ConfigurationPage {
                             tabs {
                                 overviewTab()
                                 tracesTab { activeClass ->
-                                    tracesHeader(activeClass, LATEST, SLOWEST, FAILED)
+                                    traces(activeClass, LATEST, SLOWEST, FAILED)
                                 }
                                 configurationTab(isActive = true)
                             }

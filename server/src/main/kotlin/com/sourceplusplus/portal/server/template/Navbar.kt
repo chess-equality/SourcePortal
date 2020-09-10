@@ -25,6 +25,42 @@ fun FlowContent.configurationNavBar(block: FlowContent.() -> Unit) {
     }
 }
 
+fun FlowContent.timeDropdown(cssClasses: String = "marginlefting align_content_center") {
+    div(cssClasses) {
+        div("ui icon top left pointing dropdown") {
+            i("clock outline icon spp_red_color spp_font_margin") {
+            }
+            div("menu secondary_background_color no_top_margin") {
+                div("item") {
+                    id = "last_5_minutes_time"
+                    onClick = "updateTime('last_5_minutes')"
+                    span("menu_tooltip_text") { +"LAST 5 MINUTES" }
+                }
+                div("item") {
+                    id = "last_15_minutes_time"
+                    onClick = "updateTime('last_15_minutes')"
+                    span("menu_tooltip_active_text") { +"LAST 15 MINUTES" }
+                }
+                div("item") {
+                    id = "last_30_minutes_time"
+                    onClick = "updateTime('last_30_minutes')"
+                    span("menu_tooltip_text") { +"LAST 30 MINUTES" }
+                }
+                div("item") {
+                    id = "last_hour_time"
+                    onClick = "updateTime('last_hour')"
+                    span("menu_tooltip_text") { +"LAST HOUR" }
+                }
+                div("item") {
+                    id = "last_3_hours_time"
+                    onClick = "updateTime('last_3_hours')"
+                    span("menu_tooltip_text") { +"LAST 3 HOURS" }
+                }
+            }
+        }
+    }
+}
+
 fun FlowContent.tracesHeader(cssClasses: String = "") {
     a(classes = "ui item dropdown active_sub_tab") {
         id = "latest_traces_header"
@@ -101,42 +137,6 @@ fun FlowContent.tracesHeader(cssClasses: String = "") {
         span {
             id = "span_info_header_text"
             + "Span Info"
-        }
-    }
-}
-
-fun FlowContent.timeDropdown(cssClasses: String = "marginlefting align_content_center") {
-    div(cssClasses) {
-        div("ui icon top left pointing dropdown") {
-            i("clock outline icon spp_red_color spp_font_margin") {
-            }
-            div("menu secondary_background_color no_top_margin") {
-                div("item") {
-                    id = "last_5_minutes_time"
-                    onClick = "updateTime('last_5_minutes')"
-                    span("menu_tooltip_text") { +"LAST 5 MINUTES" }
-                }
-                div("item") {
-                    id = "last_15_minutes_time"
-                    onClick = "updateTime('last_15_minutes')"
-                    span("menu_tooltip_active_text") { +"LAST 15 MINUTES" }
-                }
-                div("item") {
-                    id = "last_30_minutes_time"
-                    onClick = "updateTime('last_30_minutes')"
-                    span("menu_tooltip_text") { +"LAST 30 MINUTES" }
-                }
-                div("item") {
-                    id = "last_hour_time"
-                    onClick = "updateTime('last_hour')"
-                    span("menu_tooltip_text") { +"LAST HOUR" }
-                }
-                div("item") {
-                    id = "last_3_hours_time"
-                    onClick = "updateTime('last_3_hours')"
-                    span("menu_tooltip_text") { +"LAST 3 HOURS" }
-                }
-            }
         }
     }
 }

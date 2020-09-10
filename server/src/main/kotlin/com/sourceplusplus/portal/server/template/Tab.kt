@@ -46,7 +46,7 @@ fun FlowContent.configurationTab(isActive: Boolean = false) {
     }
 }
 
-fun FlowContent.tracesHeader(activeClass: String = "", vararg blocks: FlowContent.() -> Unit) {
+fun FlowContent.traces(activeClass: String = "", vararg blocks: FlowContent.() -> Unit) {
     div("ui dropdown item") {
         classes = classes.plus(activeClass)
         unsafe {
