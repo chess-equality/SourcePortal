@@ -27,15 +27,22 @@ class OverviewPage {
                             tabs {
                                 overviewTab(isActive = true)
                                 tracesTab { activeClass ->
-                                    traces(activeClass, LATEST, SLOWEST, FAILED)
+                                    tracesHeader(activeClass, LATEST, SLOWEST, FAILED)
                                 }
                                 configurationTab()
                             }
                         }
                     }
-                    mainContent {
-                        navBar {}
-                        areaChart {}
+                    overviewContent {
+                        overviewNavBar {
+                            leftAlign {
+                                timeDropdown()
+                            }
+                            rightAlign {
+                                externalPortalButton()
+                            }
+                        }
+                        areaChart()
                     }
                     overviewScripts()
                 }

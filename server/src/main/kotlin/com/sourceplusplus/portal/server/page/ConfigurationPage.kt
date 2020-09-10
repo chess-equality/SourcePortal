@@ -27,14 +27,19 @@ class ConfigurationPage {
                             tabs {
                                 overviewTab()
                                 tracesTab { activeClass ->
-                                    traces(activeClass, LATEST, SLOWEST, FAILED)
+                                    tracesHeader(activeClass, LATEST, SLOWEST, FAILED)
                                 }
                                 configurationTab(isActive = true)
                             }
                         }
                     }
-                    mainContent("pusher background_color") {
-                        configuration {}
+                    configurationContent("pusher background_color") {
+                        configurationNavBar {
+                            rightAlign {
+                                externalPortalButton()
+                            }
+                        }
+                        configurationTable()
                     }
                     configurationScripts()
                 }

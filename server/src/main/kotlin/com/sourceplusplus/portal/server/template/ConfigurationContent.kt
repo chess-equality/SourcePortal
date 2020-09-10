@@ -2,20 +2,13 @@ package com.sourceplusplus.portal.server.template
 
 import kotlinx.html.*
 
-fun FlowContent.configuration(block: FlowContent.() -> Unit) {
-    div("ui menu marginlefting aligned content menu_style_3") {
-        div("ui sidebar horizontal top menu fixed overlay visible very thin icon background_color overflow_visible") {
-            div("right menu align_content_center") {
-                a {
-                    id = "current_page_external"
-                    href = "#"
-                    onClick = "clickedViewAsExternalPortal()"
-                    i("external link icon spp_red_color spp_font_margin") {
-                    }
-                }
-            }
-        }
+fun FlowContent.configurationContent(cssClasses: String = "pusher background_color", block: FlowContent.() -> Unit) {
+    div(cssClasses) {
+        block()
     }
+}
+
+fun FlowContent.configurationTable() {
     div("ui grid marginlefting min_height") {
         div("six wide column min_height") {
             div("ui form") {
@@ -92,6 +85,4 @@ fun FlowContent.configuration(block: FlowContent.() -> Unit) {
             }
         }
     }
-
-    block()
 }

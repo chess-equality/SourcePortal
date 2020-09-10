@@ -2,9 +2,9 @@ package com.sourceplusplus.portal.server.template
 
 import kotlinx.html.*
 
-fun FlowContent.menu(classes: String = "ui accordion displaynone",
+fun FlowContent.menu(cssClasses: String = "ui accordion displaynone",
                      block: FlowContent.() -> Unit) {
-    div(classes) {
+    div(cssClasses) {
         a(classes = "item openbtn openbtn_background_white") {
             +"Close menu"
         }

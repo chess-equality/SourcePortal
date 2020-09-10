@@ -27,14 +27,22 @@ class TracesPage {
                             tabs {
                                 overviewTab()
                                 tracesTab(isActive = true) { activeClass ->
-                                    traces(activeClass, LATEST, SLOWEST, FAILED)
+                                    tracesHeader(activeClass, LATEST, SLOWEST, FAILED)
                                 }
                                 configurationTab()
                             }
                         }
                     }
-                    mainContent("pusher background_color") {
-                        traces {}
+                    tracesContent("pusher background_color") {
+                        tracesNavBar {
+                            leftAlign {
+                                tracesHeader()
+                            }
+                            rightAlign {
+                                externalPortalButton()
+                            }
+                        }
+                        tracesTable()
                     }
                     tracesScripts()
                 }
