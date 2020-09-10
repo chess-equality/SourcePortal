@@ -4,6 +4,7 @@ import com.sourceplusplus.portal.server.portal
 import com.sourceplusplus.portal.server.template.*
 import com.sourceplusplus.portal.server.template.MenuItem.*
 import com.sourceplusplus.portal.server.template.TraceType.*
+import com.sourceplusplus.portal.server.template.TimeIntervalType.*
 import kotlinx.html.*
 import kotlinx.html.stream.appendHTML
 
@@ -36,7 +37,7 @@ class OverviewPage {
                     overviewContent {
                         overviewNavBar {
                             leftAlign {
-                                timeDropdown()
+                                timeDropdown(FIVE_MINUTES, FIFTEEN_MINUTES, THIRTY_MINUTES, ONE_HOUR, THREE_HOURS)
                             }
                             rightAlign {
                                 externalPortalButton()

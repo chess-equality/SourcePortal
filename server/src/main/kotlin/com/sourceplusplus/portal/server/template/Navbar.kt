@@ -25,36 +25,18 @@ fun FlowContent.configurationNavBar(block: FlowContent.() -> Unit) {
     }
 }
 
-fun FlowContent.timeDropdown(cssClasses: String = "marginlefting align_content_center") {
+fun FlowContent.timeDropdown(vararg timeIntervals: TimeIntervalType = arrayOf(), cssClasses: String = "marginlefting align_content_center") {
     div(cssClasses) {
         div("ui icon top left pointing dropdown") {
             i("clock outline icon spp_red_color spp_font_margin") {
             }
             div("menu secondary_background_color no_top_margin") {
-                div("item") {
-                    id = "last_5_minutes_time"
-                    onClick = "updateTime('last_5_minutes')"
-                    span("menu_tooltip_text") { +"LAST 5 MINUTES" }
-                }
-                div("item") {
-                    id = "last_15_minutes_time"
-                    onClick = "updateTime('last_15_minutes')"
-                    span("menu_tooltip_active_text") { +"LAST 15 MINUTES" }
-                }
-                div("item") {
-                    id = "last_30_minutes_time"
-                    onClick = "updateTime('last_30_minutes')"
-                    span("menu_tooltip_text") { +"LAST 30 MINUTES" }
-                }
-                div("item") {
-                    id = "last_hour_time"
-                    onClick = "updateTime('last_hour')"
-                    span("menu_tooltip_text") { +"LAST HOUR" }
-                }
-                div("item") {
-                    id = "last_3_hours_time"
-                    onClick = "updateTime('last_3_hours')"
-                    span("menu_tooltip_text") { +"LAST 3 HOURS" }
+                for (timeInterval in timeIntervals) {
+                    div("item") {
+                        id = "last_${timeInterval.id}_time"
+                        onClick = "updateTime('last_${timeInterval.id}')"
+                        span("menu_tooltip_text") { +"LAST ${timeInterval.description}" }
+                    }
                 }
             }
         }
@@ -159,4 +141,12 @@ fun FlowContent.leftAlign(block: FlowContent.() -> Unit) {
 
 fun FlowContent.rightAlign(block: FlowContent.() -> Unit) {
     block()
+}
+
+enum class TimeIntervalType(val id: String, val description: String) {
+    FIVE_MINUTES("5_minutes", "5 MINUTES"),
+    FIFTEEN_MINUTES("15_minutes", "15 MINUTES"),
+    THIRTY_MINUTES("30_minutes", "30 MINUTES"),
+    ONE_HOUR("hour", "HOUR"),
+    THREE_HOURS("3_hours", "3 HOURS");
 }
