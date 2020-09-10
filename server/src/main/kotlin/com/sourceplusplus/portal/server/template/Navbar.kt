@@ -25,17 +25,17 @@ fun FlowContent.configurationNavBar(block: FlowContent.() -> Unit) {
     }
 }
 
-fun FlowContent.timeDropdown(vararg timeIntervals: TimeIntervalType = arrayOf(), cssClasses: String = "marginlefting align_content_center") {
+fun FlowContent.timeDropdown(vararg timeIntervalTypes: TimeIntervalType = arrayOf(), cssClasses: String = "marginlefting align_content_center") {
     div(cssClasses) {
         div("ui icon top left pointing dropdown") {
             i("clock outline icon spp_red_color spp_font_margin") {
             }
             div("menu secondary_background_color no_top_margin") {
-                for (timeInterval in timeIntervals) {
+                for (timeIntervalType in timeIntervalTypes) {
                     div("item") {
-                        id = "last_${timeInterval.id}_time"
-                        onClick = "updateTime('last_${timeInterval.id}')"
-                        span("menu_tooltip_text") { +"LAST ${timeInterval.description}" }
+                        id = "last_${timeIntervalType.id}_time"
+                        onClick = "updateTime('last_${timeIntervalType.id}')"
+                        span("menu_tooltip_text") { +"LAST ${timeIntervalType.description}" }
                     }
                 }
             }

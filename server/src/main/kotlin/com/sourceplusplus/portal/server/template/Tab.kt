@@ -46,7 +46,7 @@ fun FlowContent.configurationTab(isActive: Boolean = false) {
     }
 }
 
-fun FlowContent.traces(activeClass: String = "", vararg blocks: FlowContent.() -> Unit) {
+fun FlowContent.traces(activeClass: String = "", vararg traceTypes: TraceType = arrayOf()) {
     div("ui dropdown item") {
         classes = classes.plus(activeClass)
         unsafe {
@@ -55,33 +55,19 @@ fun FlowContent.traces(activeClass: String = "", vararg blocks: FlowContent.() -
         i("icon demo-icon code") {
         }
         div("menu secondary_background_color") {
-            for (block in blocks) {
-                block()
+            for (traceType in traceTypes) {
+                a(classes = "item") {
+                    id = "traces_link_${traceType.id}"
+                    href = traceType.id
+                    span("menu_tooltip_text") { +traceType.description }
+                }
             }
         }
     }
 }
 
-val LATEST: FlowContent.() -> Unit = fun FlowContent.() {
-    a(classes = "item") {
-        id = "traces_link_latest"
-        href = "traces"
-        span("menu_tooltip_text") { +"Latest" }
-    }
-}
-
-val SLOWEST: FlowContent.() -> Unit = fun FlowContent.() {
-    a(classes = "item") {
-        id = "traces_link_slowest"
-        href = "traces"
-        span("menu_tooltip_text") { +"Slowest" }
-    }
-}
-
-val FAILED: FlowContent.() -> Unit = fun FlowContent.() {
-    a(classes = "item") {
-        id = "traces_link_failed"
-        href = "traces"
-        span("menu_tooltip_text") { +"Failed" }
-    }
+enum class TraceType(val id: String, val description: String) {
+    LATEST("latest", "Latest"),
+    SLOWEST("slowest", "Slowest"),
+    FAILED("failed", "Failed");
 }

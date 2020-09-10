@@ -74,15 +74,15 @@ enum class MenuItem {
     abstract fun applyThis(flowContent: FlowContent, isActive: Boolean = false, block: FlowContent.() -> Unit)
 }
 
-fun FlowContent.subMenuItem(traceType: TraceType) {
+fun FlowContent.subMenuItem(pageType: PageType) {
     a(classes = "item sidebar_sub_text_color") {
-        id = "sidebar_traces_link_${traceType.name.toLowerCase()}"
-        href = traceType.name.toLowerCase()
-        +traceType.name
+        id = "sidebar_traces_link_${pageType.name.toLowerCase()}"
+        href = pageType.name.toLowerCase()
+        +pageType.name
     }
 }
 
-enum class TraceType {
+enum class PageType {
     Latest,
     Slowest,
     Failed
