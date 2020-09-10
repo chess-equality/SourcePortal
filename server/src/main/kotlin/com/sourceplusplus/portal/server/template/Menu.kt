@@ -2,9 +2,9 @@ package com.sourceplusplus.portal.server.template
 
 import kotlinx.html.*
 
-fun FlowContent.menu(classes: String = "ui accordion displaynone",
+fun FlowContent.menu(cssClasses: String = "ui accordion displaynone",
                      block: FlowContent.() -> Unit) {
-    div(classes) {
+    div(cssClasses) {
         a(classes = "item openbtn openbtn_background_white") {
             +"Close menu"
         }
@@ -78,12 +78,6 @@ fun FlowContent.subMenuItem(traceType: TraceType) {
     a(classes = "item sidebar_sub_text_color") {
         id = "sidebar_traces_link_${traceType.name.toLowerCase()}"
         href = traceType.name.toLowerCase()
-        +traceType.name
+        +traceType.name.toLowerCase().capitalize()
     }
-}
-
-enum class TraceType {
-    Latest,
-    Slowest,
-    Failed
 }

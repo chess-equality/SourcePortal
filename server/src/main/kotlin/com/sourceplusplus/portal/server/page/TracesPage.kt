@@ -17,9 +17,9 @@ class TracesPage {
                         menu {
                             menuItem(Overview) {}
                             menuItem(Traces, isActive = true) {
-                                subMenuItem(Latest)
-                                subMenuItem(Slowest)
-                                subMenuItem(Failed)
+                                subMenuItem(LATEST)
+                                subMenuItem(SLOWEST)
+                                subMenuItem(FAILED)
                             }
                             menuItem(Configuration) {}
                         }
@@ -33,8 +33,16 @@ class TracesPage {
                             }
                         }
                     }
-                    mainContent("pusher background_color") {
-                        traces {}
+                    tracesContent {
+                        tracesNavBar {
+                            leftAlign {
+                                tracesHeader()
+                            }
+                            rightAlign {
+                                externalPortalButton()
+                            }
+                        }
+                        tracesTable()
                     }
                     tracesScripts()
                 }

@@ -17,9 +17,9 @@ class ConfigurationPage {
                         menu {
                             menuItem(Overview) {}
                             menuItem(Traces) {
-                                subMenuItem(Latest)
-                                subMenuItem(Slowest)
-                                subMenuItem(Failed)
+                                subMenuItem(LATEST)
+                                subMenuItem(SLOWEST)
+                                subMenuItem(FAILED)
                             }
                             menuItem(Configuration, isActive = true) {}
                         }
@@ -33,8 +33,13 @@ class ConfigurationPage {
                             }
                         }
                     }
-                    mainContent("pusher background_color") {
-                        configuration {}
+                    configurationContent {
+                        configurationNavBar {
+                            rightAlign {
+                                externalPortalButton()
+                            }
+                        }
+                        configurationTable()
                     }
                     configurationScripts()
                 }

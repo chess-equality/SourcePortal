@@ -2,8 +2,14 @@ package com.sourceplusplus.portal.server.template
 
 import kotlinx.html.*
 
-fun FlowContent.areaChart(classes: String = "ui padded equal height grid background_color", block: FlowContent.() -> Unit) {
-    div(classes) {
+fun FlowContent.overviewContent(cssClasses: String = "pusher", block: FlowContent.() -> Unit) {
+    div(cssClasses) {
+        block()
+    }
+}
+
+fun FlowContent.areaChart(cssClasses: String = "ui padded equal height grid background_color") {
+    div(cssClasses) {
         style = "min-height: 100vh; margin-left: 60px !important"
         div("twelve wide stretched column") {
             div("ui equal height grid") {
@@ -60,6 +66,4 @@ fun FlowContent.areaChart(classes: String = "ui padded equal height grid backgro
             }
         }
     }
-
-    block()
 }

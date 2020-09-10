@@ -4,6 +4,7 @@ import com.sourceplusplus.portal.server.portal
 import com.sourceplusplus.portal.server.template.*
 import com.sourceplusplus.portal.server.template.MenuItem.*
 import com.sourceplusplus.portal.server.template.TraceType.*
+import com.sourceplusplus.portal.server.template.TimeIntervalType.*
 import kotlinx.html.*
 import kotlinx.html.stream.appendHTML
 
@@ -17,9 +18,9 @@ class OverviewPage {
                         menu {
                             menuItem(Overview, isActive = true) {}
                             menuItem(Traces) {
-                                subMenuItem(Latest)
-                                subMenuItem(Slowest)
-                                subMenuItem(Failed)
+                                subMenuItem(LATEST)
+                                subMenuItem(SLOWEST)
+                                subMenuItem(FAILED)
                             }
                             menuItem(Configuration) {}
                         }
@@ -33,9 +34,16 @@ class OverviewPage {
                             }
                         }
                     }
-                    mainContent {
-                        navBar {}
-                        areaChart {}
+                    overviewContent {
+                        overviewNavBar {
+                            leftAlign {
+                                timeDropdown(FIVE_MINUTES, FIFTEEN_MINUTES, THIRTY_MINUTES, ONE_HOUR, THREE_HOURS)
+                            }
+                            rightAlign {
+                                externalPortalButton()
+                            }
+                        }
+                        areaChart()
                     }
                     overviewScripts()
                 }
