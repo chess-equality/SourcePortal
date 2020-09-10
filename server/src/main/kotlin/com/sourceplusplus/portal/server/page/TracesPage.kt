@@ -2,7 +2,7 @@ package com.sourceplusplus.portal.server.page
 
 import com.sourceplusplus.portal.server.portal
 import com.sourceplusplus.portal.server.template.*
-import com.sourceplusplus.portal.server.template.MenuItem.*
+import com.sourceplusplus.portal.server.template.PageType.*
 import com.sourceplusplus.portal.server.template.TraceType.*
 import kotlinx.html.*
 import kotlinx.html.stream.appendHTML
@@ -17,9 +17,7 @@ class TracesPage {
                         menu {
                             menuItem(Overview) {}
                             menuItem(Traces, isActive = true) {
-                                subMenuItem(LATEST)
-                                subMenuItem(SLOWEST)
-                                subMenuItem(FAILED)
+                                subMenuItem(LATEST, SLOWEST, FAILED)
                             }
                             menuItem(Configuration) {}
                         }

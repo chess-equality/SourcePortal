@@ -2,7 +2,7 @@ package com.sourceplusplus.portal.server.page
 
 import com.sourceplusplus.portal.server.portal
 import com.sourceplusplus.portal.server.template.*
-import com.sourceplusplus.portal.server.template.MenuItem.*
+import com.sourceplusplus.portal.server.template.PageType.*
 import com.sourceplusplus.portal.server.template.TraceType.*
 import com.sourceplusplus.portal.server.template.TimeIntervalType.*
 import kotlinx.html.*
@@ -18,9 +18,7 @@ class OverviewPage {
                         menu {
                             menuItem(Overview, isActive = true) {}
                             menuItem(Traces) {
-                                subMenuItem(LATEST)
-                                subMenuItem(SLOWEST)
-                                subMenuItem(FAILED)
+                                subMenuItem(LATEST, SLOWEST, FAILED)
                             }
                             menuItem(Configuration) {}
                         }

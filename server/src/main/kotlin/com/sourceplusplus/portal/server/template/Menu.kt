@@ -16,11 +16,11 @@ fun FlowContent.menu(cssClasses: String = "ui accordion displaynone",
     }
 }
 
-fun FlowContent.menuItem(menuItem: MenuItem, isActive: Boolean = false, block: FlowContent.() -> Unit) {
-    menuItem.applyThis(this, isActive, block)
+fun FlowContent.menuItem(pageType: PageType, isActive: Boolean = false, block: FlowContent.() -> Unit) {
+    pageType.applyThis(this, isActive, block)
 }
 
-enum class MenuItem {
+enum class PageType {
     Overview {
         override fun applyThis(flowContent: FlowContent, isActive: Boolean, block: FlowContent.() -> Unit) {
             flowContent.apply {
@@ -74,10 +74,12 @@ enum class MenuItem {
     abstract fun applyThis(flowContent: FlowContent, isActive: Boolean = false, block: FlowContent.() -> Unit)
 }
 
-fun FlowContent.subMenuItem(traceType: TraceType) {
-    a(classes = "item sidebar_sub_text_color") {
-        id = "sidebar_traces_link_${traceType.name.toLowerCase()}"
-        href = traceType.name.toLowerCase()
-        +traceType.name.toLowerCase().capitalize()
+fun FlowContent.subMenuItem(vararg traceTypes: TraceType = arrayOf()) {
+    for (traceType in traceTypes) {
+        a(classes = "item sidebar_sub_text_color") {
+            id = "sidebar_traces_link_${traceType.id}"
+            href = traceType.id
+            +traceType.description
+        }
     }
 }
