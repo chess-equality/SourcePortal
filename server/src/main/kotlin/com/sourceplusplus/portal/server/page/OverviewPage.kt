@@ -16,11 +16,11 @@ class OverviewPage {
                 overviewPage {
                     leftNav {
                         menu {
-                            menuItem(Overview, isActive = true) {}
-                            menuItem(Traces) {
+                            menuItem(OVERVIEW, isActive = true) {}
+                            menuItem(TRACES) {
                                 subMenuItem(LATEST, SLOWEST, FAILED)
                             }
-                            menuItem(Configuration) {}
+                            menuItem(CONFIGURATION) {}
                         }
                         sidebar {
                             tabs {

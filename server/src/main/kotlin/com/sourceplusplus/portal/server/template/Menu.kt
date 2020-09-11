@@ -21,7 +21,7 @@ fun FlowContent.menuItem(pageType: PageType, isActive: Boolean = false, block: F
 }
 
 enum class PageType {
-    Overview {
+    OVERVIEW {
         override fun applyThis(flowContent: FlowContent, isActive: Boolean, block: FlowContent.() -> Unit) {
             flowContent.apply {
                 if (isActive) {
@@ -36,7 +36,7 @@ enum class PageType {
             }
         }
     },
-    Traces {
+    TRACES {
         override fun applyThis(flowContent: FlowContent, isActive: Boolean, block: FlowContent.() -> Unit) {
             flowContent.apply {
                 var activeClass = "active_tab"
@@ -55,7 +55,7 @@ enum class PageType {
             }
         }
     },
-    Configuration {
+    CONFIGURATION {
         override fun applyThis(flowContent: FlowContent, isActive: Boolean, block: FlowContent.() -> Unit) {
             flowContent.apply {
                 if (isActive) {

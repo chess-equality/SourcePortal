@@ -15,11 +15,11 @@ class ConfigurationPage {
                 configurationPage {
                     leftNav {
                         menu {
-                            menuItem(Overview) {}
-                            menuItem(Traces) {
+                            menuItem(OVERVIEW) {}
+                            menuItem(TRACES) {
                                 subMenuItem(LATEST, SLOWEST, FAILED)
                             }
-                            menuItem(Configuration, isActive = true) {}
+                            menuItem(CONFIGURATION, isActive = true) {}
                         }
                         sidebar {
                             tabs {

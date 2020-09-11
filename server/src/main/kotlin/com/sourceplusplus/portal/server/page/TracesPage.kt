@@ -15,11 +15,11 @@ class TracesPage {
                 tracesPage {
                     leftNav {
                         menu {
-                            menuItem(Overview) {}
-                            menuItem(Traces, isActive = true) {
+                            menuItem(OVERVIEW) {}
+                            menuItem(TRACES, isActive = true) {
                                 subMenuItem(LATEST, SLOWEST, FAILED)
                             }
-                            menuItem(Configuration) {}
+                            menuItem(CONFIGURATION) {}
                         }
                         sidebar {
                             tabs {
