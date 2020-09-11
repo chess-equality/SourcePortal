@@ -2,9 +2,9 @@ package com.sourceplusplus.portal.server.page
 
 import com.sourceplusplus.portal.server.portal
 import com.sourceplusplus.portal.server.template.*
-import com.sourceplusplus.portal.server.template.PageType.*
-import com.sourceplusplus.portal.server.template.TraceType.*
-import com.sourceplusplus.portal.server.template.TimeIntervalType.*
+import com.sourceplusplus.portal.server.model.PageType.*
+import com.sourceplusplus.portal.server.model.TraceType.*
+import com.sourceplusplus.portal.server.model.TimeIntervalType.*
 import kotlinx.html.*
 import kotlinx.html.stream.appendHTML
 
@@ -24,11 +24,11 @@ class OverviewPage {
                         }
                         sidebar {
                             tabs {
-                                overviewTab(isActive = true)
-                                tracesTab { activeClass ->
-                                    traces(activeClass, LATEST, SLOWEST, FAILED)
+                                tabItem(OVERVIEW, isActive = true) {}
+                                tabItem(TRACES) { activeClass ->
+                                    subTabItem(activeClass, LATEST, SLOWEST, FAILED)
                                 }
-                                configurationTab()
+                                tabItem(CONFIGURATION) {}
                             }
                         }
                     }

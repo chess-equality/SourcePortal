@@ -2,8 +2,8 @@ package com.sourceplusplus.portal.server.page
 
 import com.sourceplusplus.portal.server.portal
 import com.sourceplusplus.portal.server.template.*
-import com.sourceplusplus.portal.server.template.PageType.*
-import com.sourceplusplus.portal.server.template.TraceType.*
+import com.sourceplusplus.portal.server.model.PageType.*
+import com.sourceplusplus.portal.server.model.TraceType.*
 import kotlinx.html.*
 import kotlinx.html.stream.appendHTML
 
@@ -23,11 +23,11 @@ class ConfigurationPage {
                         }
                         sidebar {
                             tabs {
-                                overviewTab()
-                                tracesTab { activeClass ->
-                                    traces(activeClass, LATEST, SLOWEST, FAILED)
+                                tabItem(OVERVIEW) {}
+                                tabItem(TRACES) { activeClass ->
+                                    subTabItem(activeClass, LATEST, SLOWEST, FAILED)
                                 }
-                                configurationTab(isActive = true)
+                                tabItem(CONFIGURATION, isActive = true) {}
                             }
                         }
                     }
