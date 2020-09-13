@@ -40,7 +40,11 @@ class TracesPage {
                                 externalPortalButton()
                             }
                         }
-                        tracesTable()
+                        tracesTable {
+                            topTraceTable()
+                            traceStackTable()
+                            spanInfoPanel()
+                        }
                     }
                     tracesScripts()
                 }

@@ -43,7 +43,9 @@ enum class PageType {
                         activeClass = "inactive_tab"
                     }
                     div("title item") {
-                        classes = classes.plus(activeClass)
+                        if (activeClass.isNotEmpty()) {
+                            classes = classes.plus(activeClass)
+                        }
                         i("dropdown icon") {
                         }
                         +"Traces"

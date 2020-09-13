@@ -37,7 +37,10 @@ class ConfigurationPage {
                                 externalPortalButton()
                             }
                         }
-                        configurationTable()
+                        configurationTable {
+                            artifactConfiguration()
+                            artifactInformation()
+                        }
                     }
                     configurationScripts()
                 }

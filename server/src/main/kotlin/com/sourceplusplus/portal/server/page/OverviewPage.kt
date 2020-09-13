@@ -4,6 +4,7 @@ import com.sourceplusplus.portal.server.portal
 import com.sourceplusplus.portal.server.template.*
 import com.sourceplusplus.portal.server.model.PageType.*
 import com.sourceplusplus.portal.server.model.TraceType.*
+import com.sourceplusplus.portal.server.model.ChartItemType.*
 import com.sourceplusplus.portal.server.model.TimeIntervalType.*
 import kotlinx.html.*
 import kotlinx.html.stream.appendHTML
@@ -41,7 +42,7 @@ class OverviewPage {
                                 externalPortalButton()
                             }
                         }
-                        areaChart()
+                        areaChart(AVG_THROUGHPUT, AVG_RESPONSE_TIME, AVG_SLA)
                     }
                     overviewScripts()
                 }

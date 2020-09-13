@@ -124,14 +124,12 @@ fun FlowContent.tracesHeader(cssClasses: String = "") {
     }
 }
 
-fun FlowContent.externalPortalButton(cssClasses: String = "right menu align_content_center") {
-    div(cssClasses) {
-        a {
-            id = "current_page_external"
-            href = "#"
-            onClick = "clickedViewAsExternalPortal()"
-            i("external link icon spp_red_color spp_font_margin") {
-            }
+fun FlowContent.externalPortalButton() {
+    a {
+        id = "current_page_external"
+        href = "#"
+        onClick = "clickedViewAsExternalPortal()"
+        i("external link icon spp_red_color spp_font_margin") {
         }
     }
 }
@@ -140,6 +138,9 @@ fun FlowContent.leftAlign(block: FlowContent.() -> Unit) {
     block()
 }
 
-fun FlowContent.rightAlign(block: FlowContent.() -> Unit) {
-    block()
+fun FlowContent.rightAlign(cssClasses: String = "menu align_content_center", block: FlowContent.() -> Unit) {
+    val css = "right $cssClasses".trim()
+    div(css) {
+        block()
+    }
 }

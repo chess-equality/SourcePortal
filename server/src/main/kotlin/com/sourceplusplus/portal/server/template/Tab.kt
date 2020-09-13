@@ -13,7 +13,9 @@ fun FlowContent.tabItem(pageType: PageType, isActive: Boolean = false, block: Fl
 
 fun FlowContent.subTabItem(activeClass: String = "", vararg traceTypes: TraceType = arrayOf()) {
     div("ui dropdown item") {
-        classes = classes.plus(activeClass)
+        if (activeClass.isNotEmpty()) {
+            classes = classes.plus(activeClass)
+        }
         unsafe {
             +"""<z class="displaynone">Traces</z>"""
         }
