@@ -42,7 +42,11 @@ class OverviewPage {
                                 externalPortalButton()
                             }
                         }
-                        areaChart(AVG_THROUGHPUT, AVG_RESPONSE_TIME, AVG_SLA)
+                        areaChart {
+                            chartItem(AVG_THROUGHPUT)
+                            chartItem(AVG_RESPONSE_TIME, isActive = true)
+                            chartItem(AVG_SLA)
+                        }
                     }
                     overviewScripts()
                 }
