@@ -15,7 +15,7 @@ class OverviewPage {
             appendLine("<!DOCTYPE html>")
             appendHTML().portal {
                 overviewPage {
-                    leftNav {
+                    portalNav {
                         menu {
                             menuItem(OVERVIEW, isActive = true) {}
                             menuItem(TRACES) {
@@ -35,9 +35,7 @@ class OverviewPage {
                     }
                     overviewContent {
                         overviewNavBar {
-                            leftAlign {
-                                timeDropdown(FIVE_MINUTES, FIFTEEN_MINUTES, THIRTY_MINUTES, ONE_HOUR, THREE_HOURS)
-                            }
+                            timeDropdown(FIVE_MINUTES, FIFTEEN_MINUTES, THIRTY_MINUTES, ONE_HOUR, THREE_HOURS)
                             rightAlign {
                                 externalPortalButton()
                             }

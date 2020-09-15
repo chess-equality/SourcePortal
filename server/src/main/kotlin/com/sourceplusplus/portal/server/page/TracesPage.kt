@@ -13,7 +13,7 @@ class TracesPage {
             appendLine("<!DOCTYPE html>")
             appendHTML().portal {
                 tracesPage {
-                    leftNav {
+                    portalNav {
                         menu {
                             menuItem(OVERVIEW) {}
                             menuItem(TRACES, isActive = true) {
@@ -33,9 +33,7 @@ class TracesPage {
                     }
                     tracesContent {
                         tracesNavBar {
-                            leftAlign {
-                                tracesHeader()
-                            }
+                            tracesHeader()
                             rightAlign {
                                 externalPortalButton()
                             }

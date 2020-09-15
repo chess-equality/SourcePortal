@@ -19,8 +19,7 @@ fun FlowContent.subTabItem(activeClass: String = "", vararg traceTypes: TraceTyp
         unsafe {
             +"""<z class="displaynone">Traces</z>"""
         }
-        i("icon demo-icon code") {
-        }
+        i("icon demo-icon code")
         div("menu secondary_background_color") {
             for (traceType in traceTypes) {
                 a(classes = "item") {

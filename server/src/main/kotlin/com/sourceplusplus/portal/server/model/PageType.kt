@@ -19,15 +19,13 @@ enum class PageType {
                 } else {
                     if (isActive) {
                         a(classes = "ui dropdown item active_tab") {
-                            i("icon demo-icon dashboard") {
-                            }
+                            i("icon demo-icon dashboard")
                         }
                     } else {
                         a(classes = "ui item hide_on_toggle") {
                             id = "overview_link"
                             href = "overview"
-                            i("icon demo-icon dashboard inactive_tab") {
-                            }
+                            i("icon demo-icon dashboard inactive_tab")
                         }
                     }
                 }
@@ -46,8 +44,7 @@ enum class PageType {
                         if (activeClass.isNotEmpty()) {
                             classes = classes.plus(activeClass)
                         }
-                        i("dropdown icon") {
-                        }
+                        i("dropdown icon")
                         +"Traces"
                     }
                     div("content") {
@@ -79,15 +76,13 @@ enum class PageType {
                 } else {
                     if (isActive) {
                         a(classes = "ui dropdown item active_tab") {
-                            i("icon configure") {
-                            }
+                            i("icon configure")
                         }
                     } else {
                         a(classes = "ui item hide_on_toggle") {
                             id = "configuration_link"
                             href = "configuration"
-                            i("icon configure inactive_tab") {
-                            }
+                            i("icon configure inactive_tab")
                         }
                     }
                 }

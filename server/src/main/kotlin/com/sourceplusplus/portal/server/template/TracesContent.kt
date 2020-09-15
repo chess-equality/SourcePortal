@@ -2,14 +2,14 @@ package com.sourceplusplus.portal.server.template
 
 import kotlinx.html.*
 
-fun FlowContent.tracesContent(cssClasses: String = "pusher background_color", block: FlowContent.() -> Unit) {
-    div(cssClasses) {
+fun FlowContent.tracesContent(block: FlowContent.() -> Unit) {
+    div("pusher background_color") {
         block()
     }
 }
 
-fun FlowContent.tracesTable(cssClasses: String = "wide column marginlefting", block: FlowContent.() -> Unit) {
-    div(cssClasses) {
+fun FlowContent.tracesTable(block: FlowContent.() -> Unit) {
+    div("wide column marginlefting") {
         block()
     }
 }

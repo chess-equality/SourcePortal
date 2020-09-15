@@ -4,6 +4,8 @@ import com.sourceplusplus.portal.server.portal
 import com.sourceplusplus.portal.server.template.*
 import com.sourceplusplus.portal.server.model.PageType.*
 import com.sourceplusplus.portal.server.model.TraceType.*
+import com.sourceplusplus.portal.server.model.ArtifactConfigType.*
+import com.sourceplusplus.portal.server.model.ArtifactInfoType.*
 import kotlinx.html.*
 import kotlinx.html.stream.appendHTML
 
@@ -13,7 +15,7 @@ class ConfigurationPage {
             appendLine("<!DOCTYPE html>")
             appendHTML().portal {
                 configurationPage {
-                    leftNav {
+                    portalNav {
                         menu {
                             menuItem(OVERVIEW) {}
                             menuItem(TRACES) {
@@ -38,8 +40,8 @@ class ConfigurationPage {
                             }
                         }
                         configurationTable {
-                            artifactConfiguration()
-                            artifactInformation()
+                            artifactConfiguration(ENTRY_METHOD, AUTO_SUBSCRIBE)
+                            artifactInformation(QUALIFIED_NAME, CREATE_DATE, LAST_UPDATED, ENDPOINT)
                         }
                     }
                     configurationScripts()
