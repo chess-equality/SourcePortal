@@ -8,7 +8,41 @@ fun FlowContent.tabs(block: FlowContent.() -> Unit) {
 }
 
 fun FlowContent.tabItem(pageType: PageType, isActive: Boolean = false, block: FlowContent.(activeClass: String) -> Unit) {
-    pageType.applyThis(this, false, isActive, block)
+    when (pageType) {
+        PageType.OVERVIEW -> apply {
+            if (isActive) {
+                a(classes = "ui dropdown item active_tab") {
+                    i("icon demo-icon dashboard")
+                }
+            } else {
+                a(classes = "ui item hide_on_toggle") {
+                    id = "overview_link"
+                    href = "overview"
+                    i("icon demo-icon dashboard inactive_tab")
+                }
+            }
+        }
+        PageType.TRACES -> apply {
+            var activeClass = "active_tab"
+            if (!isActive) {
+                activeClass = "inactive_tab"
+            }
+            block(activeClass)
+        }
+        PageType.CONFIGURATION -> apply {
+            if (isActive) {
+                a(classes = "ui dropdown item active_tab") {
+                    i("icon configure")
+                }
+            } else {
+                a(classes = "ui item hide_on_toggle") {
+                    id = "configuration_link"
+                    href = "configuration"
+                    i("icon configure inactive_tab")
+                }
+            }
+        }
+    }
 }
 
 fun FlowContent.subTabItem(activeClass: String = "", vararg traceTypes: TraceType = arrayOf()) {

@@ -14,22 +14,11 @@ class TracesPage {
             appendHTML().portal {
                 tracesPage {
                     portalNav {
-                        menu {
-                            menuItem(OVERVIEW) {}
-                            menuItem(TRACES, isActive = true) {
-                                subMenuItem(LATEST, SLOWEST, FAILED)
-                            }
-                            menuItem(CONFIGURATION) {}
+                        navItem(OVERVIEW) {}
+                        navItem(TRACES, isActive = true) { activeClass ->
+                            navSubItem(activeClass, LATEST, SLOWEST, FAILED)
                         }
-                        sidebar {
-                            tabs {
-                                tabItem(OVERVIEW) {}
-                                tabItem(TRACES, isActive = true) { activeClass ->
-                                    subTabItem(activeClass, LATEST, SLOWEST, FAILED)
-                                }
-                                tabItem(CONFIGURATION) {}
-                            }
-                        }
+                        navItem(CONFIGURATION) {}
                     }
                     tracesContent {
                         tracesNavBar {

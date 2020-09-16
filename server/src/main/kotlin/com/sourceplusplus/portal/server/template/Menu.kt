@@ -16,7 +16,46 @@ fun FlowContent.menu(block: FlowContent.() -> Unit) {
 }
 
 fun FlowContent.menuItem(pageType: PageType, isActive: Boolean = false, block: FlowContent.(activeClass: String) -> Unit) {
-    pageType.applyThis(this, true, isActive, block)
+    when (pageType) {
+        PageType.OVERVIEW -> apply {
+            if (isActive) {
+                a(classes = "item active_tab") { +"Dashboard" }
+            } else {
+                a(classes = "item inactive_tab") {
+                    id = "sidebar_overview_link"
+                    href = "overview"
+                    +"Dashboard"
+                }
+            }
+        }
+        PageType.TRACES -> apply {
+            var activeClass = "active_tab"
+            if (!isActive) {
+                activeClass = "inactive_tab"
+            }
+            div("title item") {
+                if (activeClass.isNotEmpty()) {
+                    classes = classes.plus(activeClass)
+                }
+                i("dropdown icon")
+                +"Traces"
+            }
+            div("content") {
+                block(activeClass)
+            }
+        }
+        PageType.CONFIGURATION -> apply {
+            if (isActive) {
+                a(classes = "item active_tab") { + "Configuration" }
+            } else {
+                a(classes = "item inactive_tab") {
+                    id = "sidebar_configuration_link"
+                    href = "configuration"
+                    +"Configuration"
+                }
+            }
+        }
+    }
 }
 
 fun FlowContent.subMenuItem(vararg traceTypes: TraceType = arrayOf()) {

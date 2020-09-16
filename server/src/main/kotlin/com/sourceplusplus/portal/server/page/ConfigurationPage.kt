@@ -16,22 +16,11 @@ class ConfigurationPage {
             appendHTML().portal {
                 configurationPage {
                     portalNav {
-                        menu {
-                            menuItem(OVERVIEW) {}
-                            menuItem(TRACES) {
-                                subMenuItem(LATEST, SLOWEST, FAILED)
-                            }
-                            menuItem(CONFIGURATION, isActive = true) {}
+                        navItem(OVERVIEW) {}
+                        navItem(TRACES) { activeClass ->
+                            navSubItem(activeClass, LATEST, SLOWEST, FAILED)
                         }
-                        sidebar {
-                            tabs {
-                                tabItem(OVERVIEW) {}
-                                tabItem(TRACES) { activeClass ->
-                                    subTabItem(activeClass, LATEST, SLOWEST, FAILED)
-                                }
-                                tabItem(CONFIGURATION, isActive = true) {}
-                            }
-                        }
+                        navItem(CONFIGURATION, isActive = true) {}
                     }
                     configurationContent {
                         configurationNavBar {

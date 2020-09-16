@@ -16,22 +16,11 @@ class OverviewPage {
             appendHTML().portal {
                 overviewPage {
                     portalNav {
-                        menu {
-                            menuItem(OVERVIEW, isActive = true) {}
-                            menuItem(TRACES) {
-                                subMenuItem(LATEST, SLOWEST, FAILED)
-                            }
-                            menuItem(CONFIGURATION) {}
+                        navItem(OVERVIEW, isActive = true) {}
+                        navItem(TRACES) { activeClass ->
+                            navSubItem(activeClass, LATEST, SLOWEST, FAILED)
                         }
-                        sidebar {
-                            tabs {
-                                tabItem(OVERVIEW, isActive = true) {}
-                                tabItem(TRACES) { activeClass ->
-                                    subTabItem(activeClass, LATEST, SLOWEST, FAILED)
-                                }
-                                tabItem(CONFIGURATION) {}
-                            }
-                        }
+                        navItem(CONFIGURATION) {}
                     }
                     overviewContent {
                         overviewNavBar {
