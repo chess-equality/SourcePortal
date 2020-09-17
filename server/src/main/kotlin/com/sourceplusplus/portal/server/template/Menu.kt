@@ -16,7 +16,7 @@ fun FlowContent.menu(block: FlowContent.() -> Unit) {
     }
 }
 
-fun FlowContent.menuItem(pageType: PageType, isActive: Boolean = false, block: FlowContent.(activeClass: String) -> Unit) {
+fun FlowContent.menuItem(pageType: PageType, isActive: Boolean, block: (FlowContent.() -> Unit)? = null) {
     when (pageType) {
         PageType.OVERVIEW -> apply {
             if (isActive) {
@@ -34,15 +34,12 @@ fun FlowContent.menuItem(pageType: PageType, isActive: Boolean = false, block: F
             if (!isActive) {
                 activeClass = "inactive_tab"
             }
-            div("title item") {
-                if (activeClass.isNotEmpty()) {
-                    classes = classes.plus(activeClass)
-                }
+            div("title item $activeClass") {
                 i("dropdown icon")
                 +"Traces"
             }
             div("content") {
-                block(activeClass)
+                block?.let { it() }
             }
         }
         PageType.CONFIGURATION -> apply {

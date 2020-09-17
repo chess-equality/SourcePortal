@@ -14,13 +14,13 @@ class ConfigurationPage {
         return buildString {
             appendLine("<!DOCTYPE html>")
             appendHTML().portal {
-                configurationPage {
+                configurationPage("Configuration - Source++") {
                     portalNav {
-                        navItem(OVERVIEW) {}
-                        navItem(TRACES) { activeClass ->
-                            navSubItem(activeClass, LATEST, SLOWEST, FAILED)
+                        navItem(OVERVIEW)
+                        navItem(TRACES) {
+                            navSubItem(LATEST, SLOWEST, FAILED)
                         }
-                        navItem(CONFIGURATION, isActive = true) {}
+                        navItem(CONFIGURATION, isActive = true)
                     }
                     configurationContent {
                         configurationNavBar {
@@ -40,11 +40,11 @@ class ConfigurationPage {
     }
 }
 
-fun HTML.configurationPage(title: String = "Configuration - Source++", bodyClass: String = "", block: FlowContent.() -> Unit) {
+fun HTML.configurationPage(title: String, block: FlowContent.() -> Unit) {
     head {
-        configurationHead(title) {}
+        configurationHead(title)
     }
-    body(bodyClass) {
+    body {
         block()
     }
 }

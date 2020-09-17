@@ -1,7 +1,7 @@
 package com.sourceplusplus.portal.server.template
 
-import com.sourceplusplus.portal.server.model.trace.TraceTableType.*
-import com.sourceplusplus.portal.server.model.trace.TraceSpanInfoType.*
+import com.sourceplusplus.portal.server.model.trace.TraceTableType
+import com.sourceplusplus.portal.server.model.trace.TraceSpanInfoType
 import kotlinx.html.*
 
 fun FlowContent.tracesContent(block: FlowContent.() -> Unit) {
@@ -16,13 +16,13 @@ fun FlowContent.tracesTable(block: FlowContent.() -> Unit) {
     }
 }
 
-fun FlowContent.topTraceTable() {
+fun FlowContent.topTraceTable(vararg traceTableTypes: TraceTableType = arrayOf()) {
     table("ui celled striped table unstackable secondary_background_color no_top_margin") {
         id = "top_trace_table"
         thead {
             tr {
-                for (traceTableType in arrayOf(OPERATION, OCCURRED, EXEC, STATUS)) {
-                    th(classes = "secondary_background_color ${traceTableType.css}") {
+                for (traceTableType in traceTableTypes) {
+                    th(classes = "secondary_background_color ${if (traceTableType.isCentered) "trace_th_center" else "trace_th"}") {
                         + traceTableType.description
                     }
                 }
@@ -34,13 +34,13 @@ fun FlowContent.topTraceTable() {
     }
 }
 
-fun FlowContent.traceStackTable() {
+fun FlowContent.traceStackTable(vararg traceTableTypes: TraceTableType = arrayOf()) {
     table("ui celled striped table unstackable trace_stack_table hidden_full_height") {
         id = "trace_stack_table"
         thead("secondary_background_color") {
             tr {
-                for (traceTableType in arrayOf(OPERATION, EXEC, EXEC_PCT, STATUS)) {
-                    th(classes = "secondary_background_color ${traceTableType.css}") {
+                for (traceTableType in traceTableTypes) {
+                    th(classes = "secondary_background_color ${if (traceTableType.isCentered) "trace_th_center" else "trace_th"}") {
                         + traceTableType.description
                     }
                 }
@@ -52,12 +52,12 @@ fun FlowContent.traceStackTable() {
     }
 }
 
-fun FlowContent.spanInfoPanel() {
+fun FlowContent.spanInfoPanel(vararg traceSpanInfoTypes: TraceSpanInfoType = arrayOf()) {
     div("visibility_hidden") {
         id = "span_info_panel"
         div("ui segments") {
             div("ui segment span_segment_background") {
-                for (traceSpanInfoType in arrayOf(START_TIME, END_TIME)) {
+                for (traceSpanInfoType in traceSpanInfoTypes) {
                     p {
                         + "${traceSpanInfoType.description}:"
                         span {

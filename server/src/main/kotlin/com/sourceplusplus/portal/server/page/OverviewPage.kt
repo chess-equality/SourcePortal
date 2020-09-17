@@ -14,13 +14,13 @@ class OverviewPage {
         return buildString {
             appendLine("<!DOCTYPE html>")
             appendHTML().portal {
-                overviewPage {
+                overviewPage("Overview - Source++") {
                     portalNav {
-                        navItem(OVERVIEW, isActive = true) {}
-                        navItem(TRACES) { activeClass ->
-                            navSubItem(activeClass, LATEST, SLOWEST, FAILED)
+                        navItem(OVERVIEW, isActive = true)
+                        navItem(TRACES) {
+                            navSubItem(LATEST, SLOWEST, FAILED)
                         }
-                        navItem(CONFIGURATION) {}
+                        navItem(CONFIGURATION)
                     }
                     overviewContent {
                         overviewNavBar {
@@ -42,11 +42,11 @@ class OverviewPage {
     }
 }
 
-fun HTML.overviewPage(title: String = "Overview - Source++", bodyClass: String = "overflow_y_hidden", block: FlowContent.() -> Unit) {
+fun HTML.overviewPage(title: String, block: FlowContent.() -> Unit) {
     head {
-        overviewHead(title) {}
+        overviewHead(title)
     }
-    body(bodyClass) {
+    body("overflow_y_hidden") {
         block()
     }
 }

@@ -8,7 +8,7 @@ fun FlowContent.tabs(block: FlowContent.() -> Unit) {
     block()
 }
 
-fun FlowContent.tabItem(pageType: PageType, isActive: Boolean = false, block: FlowContent.(activeClass: String) -> Unit) {
+fun FlowContent.tabItem(pageType: PageType, isActive: Boolean, block: (FlowContent.() -> Unit)? = null) {
     when (pageType) {
         PageType.OVERVIEW -> apply {
             if (isActive) {
@@ -28,7 +28,13 @@ fun FlowContent.tabItem(pageType: PageType, isActive: Boolean = false, block: Fl
             if (!isActive) {
                 activeClass = "inactive_tab"
             }
-            block(activeClass)
+            div("ui dropdown item $activeClass") {
+                unsafe {
+                    +"""<z class="displaynone">Traces</z>"""
+                }
+                i("icon demo-icon code")
+                block?.let { it() }
+            }
         }
         PageType.CONFIGURATION -> apply {
             if (isActive) {
@@ -46,22 +52,13 @@ fun FlowContent.tabItem(pageType: PageType, isActive: Boolean = false, block: Fl
     }
 }
 
-fun FlowContent.subTabItem(activeClass: String = "", vararg traceTypes: TraceType = arrayOf()) {
-    div("ui dropdown item") {
-        if (activeClass.isNotEmpty()) {
-            classes = classes.plus(activeClass)
-        }
-        unsafe {
-            +"""<z class="displaynone">Traces</z>"""
-        }
-        i("icon demo-icon code")
-        div("menu secondary_background_color") {
-            for (traceType in traceTypes) {
-                a(classes = "item") {
-                    id = "traces_link_${traceType.id}"
-                    href = traceType.id
-                    span("menu_tooltip_text") { +traceType.description }
-                }
+fun FlowContent.subTabItem(vararg traceTypes: TraceType = arrayOf()) {
+    div("menu secondary_background_color") {
+        for (traceType in traceTypes) {
+            a(classes = "item") {
+                id = "traces_link_${traceType.id}"
+                href = traceType.id
+                span("menu_tooltip_text") { +traceType.description }
             }
         }
     }

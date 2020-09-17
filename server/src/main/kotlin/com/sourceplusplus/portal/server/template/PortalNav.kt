@@ -2,9 +2,7 @@ package com.sourceplusplus.portal.server.template
 
 import com.sourceplusplus.portal.server.model.PageType
 import com.sourceplusplus.portal.server.model.trace.TraceType
-import kotlinx.html.FlowContent
-import kotlinx.html.div
-import kotlinx.html.style
+import kotlinx.html.*
 
 class PortalNavigationConfiguration(private val flowContent: FlowContent) {
 
@@ -25,7 +23,7 @@ class PortalNavigationConfiguration(private val flowContent: FlowContent) {
         mode = ModeType.TAB
     }
 
-    fun navItem(pageType: PageType, isActive: Boolean = false, block: FlowContent.(activeClass: String) -> Unit) {
+    fun navItem(pageType: PageType, isActive: Boolean = false, block: (FlowContent.() -> Unit)? = null) {
         menuItems.add {
             flowContent.menuItem(pageType, isActive, block)
         }
@@ -34,10 +32,10 @@ class PortalNavigationConfiguration(private val flowContent: FlowContent) {
         }
     }
 
-    fun navSubItem(activeClass: String = "", vararg traceTypes: TraceType = arrayOf()) {
+    fun navSubItem(vararg traceTypes: TraceType = arrayOf()) {
         when (mode) {
             ModeType.MENU -> flowContent.subMenuItem(*traceTypes)
-            ModeType.TAB -> flowContent.subTabItem(activeClass, *traceTypes)
+            ModeType.TAB -> flowContent.subTabItem(*traceTypes)
         }
     }
 }

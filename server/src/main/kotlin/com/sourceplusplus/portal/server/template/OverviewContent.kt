@@ -9,7 +9,7 @@ fun FlowContent.overviewContent(block: FlowContent.() -> Unit) {
     }
 }
 
-fun FlowContent.areaChart(block: FlowContent.() -> Unit) {
+fun FlowContent.areaChart(block: (FlowContent.() -> Unit)? = null) {
     div("ui padded equal height grid background_color") {
         style = "min-height: 100vh; margin-left: 60px !important"
         div("twelve wide stretched column") {
@@ -25,7 +25,7 @@ fun FlowContent.areaChart(block: FlowContent.() -> Unit) {
         }
         div("four wide stretched column middle aligned") {
             div("ui divided link items items_font") {
-                block()
+                block?.let { it() }
             }
         }
     }
@@ -35,13 +35,13 @@ fun FlowContent.chartItem(chartItemType: ChartItemType, isActive: Boolean = fals
     val isActiveClass = if (isActive) "spp_red_color" else ""
     div("item") {
         div("ui mini statistic") {
-            onClick = "clickedViewAverage${chartItemType.description}Chart()"
+            onClick = "clickedView${chartItemType.type.capitalize()+chartItemType.description}Chart()"
             div("value align_left $isActiveClass".trim()) {
-                id = "card_${chartItemType.id}_average_header"
+                id = "card_${chartItemType.id}_${chartItemType.type}_header"
                 +"n/a"
             }
             div("label align_left $isActiveClass".trim()) {
-                id = "card_${chartItemType.id}_average_header_label"
+                id = "card_${chartItemType.id}_${chartItemType.type}_header_label"
                 +"AVG ${chartItemType.label}"
             }
         }

@@ -1,7 +1,7 @@
 package com.sourceplusplus.portal.server.template
 
 import com.sourceplusplus.portal.server.model.TimeIntervalType
-import com.sourceplusplus.portal.server.model.trace.TraceStackHeaderType.*
+import com.sourceplusplus.portal.server.model.trace.TraceStackHeaderType
 import kotlinx.html.*
 
 fun FlowContent.overviewNavBar(block: FlowContent.() -> Unit) {
@@ -44,7 +44,7 @@ fun FlowContent.timeDropdown(vararg timeIntervalTypes: TimeIntervalType = arrayO
     }
 }
 
-fun FlowContent.tracesHeader() {
+fun FlowContent.tracesHeader(vararg traceStackHeaderTypes: TraceStackHeaderType = arrayOf()) {
     a(classes = "ui item dropdown active_sub_tab") {
         id = "latest_traces_header"
         onClick = "clickedBackToTraces()"
@@ -62,9 +62,9 @@ fun FlowContent.tracesHeader() {
         }
         div("menu") {
             id = "trace_stack_menu"
-            for (traceStackHeaderType in arrayOf(TRACE_ID, TIME_OCCURRED)) {
+            for (traceStackHeaderType in traceStackHeaderTypes) {
                 div("ui input item") {
-                    i("icon ${traceStackHeaderType.cssClasses}")
+                    i("icon no_padding_top ${traceStackHeaderType.icon}")
                     input {
                         classes = setOf("input_width")
                         id = "${traceStackHeaderType.id}_field"
