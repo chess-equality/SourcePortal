@@ -1,12 +1,29 @@
 package com.sourceplusplus.portal.server.template
 
-import com.sourceplusplus.portal.server.model.*
-import kotlinx.html.*
+import com.sourceplusplus.portal.server.model.PageType
+import com.sourceplusplus.portal.server.model.TraceType
+import kotlinx.html.FlowContent
+import kotlinx.html.div
+import kotlinx.html.style
 
 class PortalNavigationConfiguration(private val flowContent: FlowContent) {
+
+    internal enum class ModeType {
+        MENU,
+        TAB
+    }
+
     val menuItems = ArrayList<() -> Unit>()
     val tabItems = ArrayList<() -> Unit>()
-    var mode = ModeType.MENU
+    private var mode = ModeType.MENU
+
+    fun setMenuMode() {
+        mode = ModeType.MENU
+    }
+
+    fun setTabMode() {
+        mode = ModeType.TAB
+    }
 
     fun navItem(pageType: PageType, isActive: Boolean = false, block: FlowContent.(activeClass: String) -> Unit) {
         menuItems.add {
@@ -28,15 +45,16 @@ class PortalNavigationConfiguration(private val flowContent: FlowContent) {
 fun FlowContent.portalNav(block: PortalNavigationConfiguration.() -> Unit) {
     div("ui sidebar vertical left menu overlay visible very thin icon spp_blue webkit_transition") {
         style = "overflow: visible !important;"
-        val items = PortalNavigationConfiguration(this).apply(block)
+        val portalNavigation = PortalNavigationConfiguration(this).apply(block)
+        portalNavigation.setMenuMode()
         menu {
-            items.menuItems.forEach {
+            portalNavigation.menuItems.forEach {
                 it.invoke()
             }
         }
-        items.mode = ModeType.TAB
+        portalNavigation.setTabMode()
         tabs {
-            items.tabItems.forEach {
+            portalNavigation.tabItems.forEach {
                 it.invoke()
             }
         }
