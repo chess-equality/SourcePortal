@@ -42,7 +42,7 @@ fun FlowContent.chartItem(chartItemType: ChartItemType, isActive: Boolean = fals
             }
             div("label align_left $isActiveClass".trim()) {
                 id = "card_${chartItemType.id}_${chartItemType.type}_header_label"
-                +"AVG ${chartItemType.label}"
+                +"${chartItemType.abbr} ${chartItemType.label}"
             }
         }
     }
