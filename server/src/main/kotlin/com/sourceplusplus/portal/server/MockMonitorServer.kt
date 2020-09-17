@@ -114,7 +114,7 @@ fun main() {
 fun displayChart(vertx: Vertx) {
     vertx.eventBus().publish(
         "1-UpdateChart", JsonObject()
-            .put("metric_type", "throughput_average")
+            .put("metric_type", "responsetime_average")
             .put(
                 "series_data", JsonArray()
                     .add(
