@@ -1,7 +1,6 @@
 package com.sourceplusplus.portal.server.template
 
 import com.sourceplusplus.portal.server.model.TimeIntervalType
-import com.sourceplusplus.portal.server.model.TraceLatestHeaderType.*
 import com.sourceplusplus.portal.server.model.TraceStackHeaderType.*
 import kotlinx.html.*
 
@@ -52,27 +51,6 @@ fun FlowContent.tracesHeader() {
         span {
             id = "latest_traces_header_text"
             + "Latest Traces"
-        }
-        div("menu") {
-            id = "latest_traces_menu"
-            for (traceLatestHeaderType in arrayOf(START, STOP)) {
-                div("ui input item") {
-                    i("icon ${traceLatestHeaderType.cssClasses}")
-                    input {
-                        classes = setOf("input_width")
-                        id = "traces_${traceLatestHeaderType.id}_field"
-                        type = InputType.text
-                        readonly = true
-                    }
-                }
-            }
-            div("divider")
-            div("ui input item align_center") {
-                label {
-                    id = "traces_total_label"
-                    + "Total: 0"
-                }
-            }
         }
     }
     a(classes = "ui item dropdown visibility_hidden") {
