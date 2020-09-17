@@ -3,9 +3,9 @@ package com.sourceplusplus.portal.server.page
 import com.sourceplusplus.portal.server.portal
 import com.sourceplusplus.portal.server.template.*
 import com.sourceplusplus.portal.server.model.PageType.*
-import com.sourceplusplus.portal.server.model.TraceType.*
-import com.sourceplusplus.portal.server.model.ArtifactConfigType.*
-import com.sourceplusplus.portal.server.model.ArtifactInfoType.*
+import com.sourceplusplus.portal.server.model.trace.TraceType.*
+import com.sourceplusplus.portal.server.model.artifact.ArtifactConfigType.*
+import com.sourceplusplus.portal.server.model.artifact.ArtifactInfoType.*
 import kotlinx.html.*
 import kotlinx.html.stream.appendHTML
 

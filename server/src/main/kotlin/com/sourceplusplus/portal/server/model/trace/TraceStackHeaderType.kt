@@ -1,4 +1,4 @@
-package com.sourceplusplus.portal.server.model
+package com.sourceplusplus.portal.server.model.trace
 
 enum class TraceStackHeaderType(val id: String, val cssClasses: String) {
     TRACE_ID("trace_id", "crosshairs no_padding_top"),

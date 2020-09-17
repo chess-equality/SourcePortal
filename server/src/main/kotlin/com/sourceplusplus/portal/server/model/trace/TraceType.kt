@@ -1,4 +1,4 @@
-package com.sourceplusplus.portal.server.model
+package com.sourceplusplus.portal.server.model.trace
 
 enum class TraceType {
     LATEST,

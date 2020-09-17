@@ -1,6 +1,7 @@
 package com.sourceplusplus.portal.server.template
 
 import com.sourceplusplus.portal.server.model.*
+import com.sourceplusplus.portal.server.model.trace.TraceType
 import kotlinx.html.*
 
 fun FlowContent.tabs(block: FlowContent.() -> Unit) {

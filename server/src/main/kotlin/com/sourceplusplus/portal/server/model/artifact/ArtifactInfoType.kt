@@ -1,4 +1,4 @@
-package com.sourceplusplus.portal.server.model
+package com.sourceplusplus.portal.server.model.artifact
 
 enum class ArtifactInfoType {
     QUALIFIED_NAME,

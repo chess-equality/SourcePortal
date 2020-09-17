@@ -1,7 +1,7 @@
 package com.sourceplusplus.portal.server.template
 
-import com.sourceplusplus.portal.server.model.TraceTableType.*
-import com.sourceplusplus.portal.server.model.TraceSpanInfoType.*
+import com.sourceplusplus.portal.server.model.trace.TraceTableType.*
+import com.sourceplusplus.portal.server.model.trace.TraceSpanInfoType.*
 import kotlinx.html.*
 
 fun FlowContent.tracesContent(block: FlowContent.() -> Unit) {

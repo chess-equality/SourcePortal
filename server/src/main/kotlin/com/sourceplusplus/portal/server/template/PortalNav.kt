@@ -1,7 +1,7 @@
 package com.sourceplusplus.portal.server.template
 
 import com.sourceplusplus.portal.server.model.PageType
-import com.sourceplusplus.portal.server.model.TraceType
+import com.sourceplusplus.portal.server.model.trace.TraceType
 import kotlinx.html.FlowContent
 import kotlinx.html.div
 import kotlinx.html.style

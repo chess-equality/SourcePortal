@@ -1,4 +1,4 @@
-package com.sourceplusplus.portal.server.model
+package com.sourceplusplus.portal.server.model.trace
 
 enum class TraceTableType(val description: String, val css: String) {
     OPERATION("Operation", "trace_th"),
