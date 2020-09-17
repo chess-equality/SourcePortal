@@ -1,6 +1,8 @@
 package com.sourceplusplus.portal.server.template
 
 import com.sourceplusplus.portal.server.model.TimeIntervalType
+import com.sourceplusplus.portal.server.model.TraceLatestHeaderType.*
+import com.sourceplusplus.portal.server.model.TraceStackHeaderType.*
 import kotlinx.html.*
 
 fun FlowContent.overviewNavBar(block: FlowContent.() -> Unit) {
@@ -53,22 +55,15 @@ fun FlowContent.tracesHeader() {
         }
         div("menu") {
             id = "latest_traces_menu"
-            div("ui input item") {
-                i("play icon spp_blue_color")
-                input {
-                    classes = setOf("input_width")
-                    id = "traces_start_field"
-                    type = InputType.text
-                    readonly = true
-                }
-            }
-            div("ui input item") {
-                i("stop icon spp_red_color")
-                input {
-                    classes = setOf("input_width")
-                    id = "traces_stop_field"
-                    type = InputType.text
-                    readonly = true
+            for (traceLatestHeaderType in arrayOf(START, STOP)) {
+                div("ui input item") {
+                    i("icon ${traceLatestHeaderType.cssClasses}")
+                    input {
+                        classes = setOf("input_width")
+                        id = "traces_${traceLatestHeaderType.id}_field"
+                        type = InputType.text
+                        readonly = true
+                    }
                 }
             }
             div("divider")
@@ -89,22 +84,15 @@ fun FlowContent.tracesHeader() {
         }
         div("menu") {
             id = "trace_stack_menu"
-            div("ui input item") {
-                i("crosshairs icon no_padding_top")
-                input {
-                    classes = setOf("input_width")
-                    id = "trace_id_field"
-                    type = InputType.text
-                    readonly = true
-                }
-            }
-            div("ui input item") {
-                i("clock outline icon no_padding_top")
-                input {
-                    classes = setOf("input_width")
-                    id = "time_occurred_field"
-                    type = InputType.text
-                    readonly = true
+            for (traceStackHeaderType in arrayOf(TRACE_ID, TIME_OCCURRED)) {
+                div("ui input item") {
+                    i("icon ${traceStackHeaderType.cssClasses}")
+                    input {
+                        classes = setOf("input_width")
+                        id = "${traceStackHeaderType.id}_field"
+                        type = InputType.text
+                        readonly = true
+                    }
                 }
             }
         }

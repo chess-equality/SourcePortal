@@ -1,5 +1,7 @@
 package com.sourceplusplus.portal.server.template
 
+import com.sourceplusplus.portal.server.model.TraceTableType.*
+import com.sourceplusplus.portal.server.model.TraceSpanInfoType.*
 import kotlinx.html.*
 
 fun FlowContent.tracesContent(block: FlowContent.() -> Unit) {
@@ -19,17 +21,10 @@ fun FlowContent.topTraceTable() {
         id = "top_trace_table"
         thead {
             tr {
-                th(classes = "secondary_background_color trace_th") {
-                    + "Operation"
-                }
-                th(classes = "secondary_background_color trace_th_center") {
-                    + "Occurred"
-                }
-                th(classes = "secondary_background_color trace_th_center") {
-                    + "Exec"
-                }
-                th(classes = "secondary_background_color trace_th_center") {
-                    + "Status"
+                for (traceTableType in arrayOf(OPERATION, OCCURRED, EXEC, STATUS)) {
+                    th(classes = "secondary_background_color ${traceTableType.css}") {
+                        + traceTableType.description
+                    }
                 }
             }
         }
@@ -44,17 +39,10 @@ fun FlowContent.traceStackTable() {
         id = "trace_stack_table"
         thead("secondary_background_color") {
             tr {
-                th(classes = "secondary_background_color trace_th") {
-                    + "Operation"
-                }
-                th(classes = "secondary_background_color trace_th_center") {
-                    + "Exec"
-                }
-                th(classes = "secondary_background_color trace_th_center") {
-                    + "Exec (%)"
-                }
-                th(classes = "secondary_background_color trace_th_center") {
-                    + "Status"
+                for (traceTableType in arrayOf(OPERATION, EXEC, EXEC_PCT, STATUS)) {
+                    th(classes = "secondary_background_color ${traceTableType.css}") {
+                        + traceTableType.description
+                    }
                 }
             }
         }
@@ -69,27 +57,18 @@ fun FlowContent.spanInfoPanel() {
         id = "span_info_panel"
         div("ui segments") {
             div("ui segment span_segment_background") {
-                p {
-                    + "Start time:"
-                    span {
-                        id = "span_info_start_time"
+                for (traceSpanInfoType in arrayOf(START_TIME, END_TIME)) {
+                    p {
+                        + "${traceSpanInfoType.description}:"
+                        span {
+                            id = "span_info_${traceSpanInfoType.id1}"
+                        }
+                        + "("
+                        span("trace_time") {
+                            id = "span_info_${traceSpanInfoType.id2}"
+                        }
+                        + ")"
                     }
-                    + "("
-                    span("trace_time") {
-                        id = "span_info_start_trace_time"
-                    }
-                    + ")"
-                }
-                p {
-                    + "Start time:"
-                    span {
-                        id = "span_info_end_time"
-                    }
-                    + "("
-                    span("trace_time") {
-                        id = "span_info_end_trace_time"
-                    }
-                    + ")"
                 }
             }
             div("ui segment displaynone no_padding") {
